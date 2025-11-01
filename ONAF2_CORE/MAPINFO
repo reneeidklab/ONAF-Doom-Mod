@@ -18,7 +18,7 @@ skill baby
 	armorfactor = 1.0
 }
 
-episode GAME1N1 { name = "Flumpty's House of Horrors" key = "f" }
+episode GAME2N1 { name = "Flumpty's House of Horrors" key = "f" }
 
 gameinfo 
 {
@@ -32,7 +32,7 @@ gameinfo
 	ChatSound = "DSPSTOP"
 }
 
-map GAME1N1 "One Night At Flumpty's 1 Default Mode"
+map GAME2N1 "One Night At Flumpty's 2 Normal Night"
 {
 	music = ""
 	next = "GAME1N2"
@@ -45,20 +45,7 @@ map GAME1N1 "One Night At Flumpty's 1 Default Mode"
 	PrecacheClasses = "ThePlayer","Flumpty","BBB","Beaver","Redman","Grunkfuss","GoldenFlumpty1"
 }
 
-map GAME1N2 "One Night At Flumpty's 1 Hard Boiled Mode"
-{
-	music = ""
-	next = "GAME1N3"
-	sky1 = "CLOUDSKY",0.05
-	UsePlayerStartZ
-	noinfighting
-	resethealth
-	resetinventory
-	NoIntermission
-	PrecacheClasses = "ThePlayer","Flumpty","BBB","Beaver","Redman","Grunkfuss","GoldenFlumpty1"
-}
-
-map GAME1N3 "One Night At Flumpty's 1 Madness Mode"
+map GAME2N2 "One Night At Flumpty's 2 Hard Boiled Mode"
 {
 	music = ""
 	next = "GAME1N3"

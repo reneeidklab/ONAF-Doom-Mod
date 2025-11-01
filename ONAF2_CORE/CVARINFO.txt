@@ -10,6 +10,3 @@ user bool cl_nametag = FALSE;
 
 //Player AFK
 Server Bool PLAYER_AFK = FALSE;
-
-//ONAF 1 Eyesaur
-Server Bool ONAF1_EYESAUR_ENEMY = FALSE;
