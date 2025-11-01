@@ -1,0 +1,2506 @@
+//SmartReverb
+ACTOR DistanceCheckerCeiling : FastProjectile
+{
+	Speed 25
+	Radius 16
+	Height 40
+	Damage 0
+	Projectile
+
+	+CEILINGHUGGER
+	+SKYEXPLODE
+	+THRUACTORS
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	+NOTIMEFREEZE
+
+	States
+	{
+  		Spawn:
+			TNT1 A 1
+			Loop
+		Death:
+			// duration must not be too short, otherwise script reports wrong values
+			TNT1 A 3 ACS_NamedExecuteAlways("StoreDistanceCheckResult", 0, GetDistance(false), ceilingz-floorz)
+			Stop
+	}
+}
+
+ACTOR VentNear 20392
+{
+	Radius 15
+	Height 15
+	scale 1.0
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	-SOLID
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Stop
+	}
+}
+
+actor FlumptyPicture 19197
+{
+	Radius 5
+	Height 5
+	-SOLID
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+actor TrickySignProp 19196
+{
+	Radius 11
+	Height 64
+	+SOLID
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	
+	States
+	{
+		Spawn:
+			CYBI A -1
+			Stop
+	}
+}
+
+actor BlockerSign 19195
+{
+	Radius 15
+	Height 64
+	+SOLID
+	
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_ChangeFlag("SOLID", false)
+			Goto NotSpawn
+		WaitingLoop:
+			TNT1 A 1 A_CheckProximity("Spawn1Anim", "ThePlayer", 71.0, 1, 0, AAPTR_DEFAULT)
+			Loop
+		Spawn1Anim:
+			CYBI A 0 A_ChangeFlag("SOLID", true)
+			CYBI ABCDEFGH 1 A_FaceTarget(360)
+			CYBI I 0 A_PlaySound("tuck",0,1.0)
+		Spawn2:
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			CYBI I 35 A_RadiusThrust(100,50,RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE,64)
+			Goto NotSpawn
+		NotSpawn:
+			TNT1 A 0 A_ChangeFlag("SOLID", false)
+		NotSpawnLoop:
+			TNT1 A 35 A_Jump(ACS_NamedExecuteWithResult("BlockerSignManager",0,0,0,0), "WaitingLoop")
+			Loop
+	}
+}
+
+actor RedSmokeFussEffectTestSpawner 19194
+{
+	Radius 2
+	Height 2
+	Speed 6
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	
+	States
+	{
+	Spawn:
+		TNT1 A 1 A_Chase
+		TNT1 A 0 A_Jump(256, "Spawn1", "Spawn")
+		Loop
+	Spawn1:
+		TNT1 A 1 A_SpawnItemEx("RedSmokeFussEffect", 0, random(-128,128), random(64,448), random(22,34), random(-4,4), 0, 0)
+		Goto Spawn
+	}
+}
+
+actor FussFogSpawner 19193
+{
+	Radius 2
+	Height 2
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	
+	States
+	{
+	Spawn:
+		TNT1 A 9
+		TNT1 A 0 A_Jump (256, "Fog", "Spawn")
+	Fog:
+		TNT1 A 1 A_SpawnItemEx ("FussFog", 0, random(-128,128), random(64,448), random(22,34), random(-4,4), 0, 0)
+		Goto Spawn
+	}
+}
+
+actor FussFog 19192
+{
+	Radius 7
+	Height 7
+	Scale 10.9
+	RenderStyle Translucent
+	Alpha 0.15
+	+NOINTERACTION
+	+FORCEXYBILLBOARD
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(256, "Smoke1")
+	Smoke1:
+		RSMK ABCDEFGHI 1 A_FadeOut(0.025)
+		Stop
+	}
+}
+
+actor RedSmokeFussEffect 19191
+{
+	Radius 3
+	Height 3
+	Scale 0.3
+	RenderStyle Add
+	Alpha 0.6
+	+NOINTERACTION
+	+FORCEXYBILLBOARD
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(256, "RedSmoke1")
+	RedSmoke1:
+		BSMK ABCDEFGHI 1 BRIGHT A_FadeOut(0.35)
+		Stop
+	}
+}
+
+ACTOR Shoe 20161
+{
+  Health 2
+  Radius 29
+  Height 29
+  Scale 3.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Turkey 20162
+{
+  Health 2
+  Radius 10
+  Height 10
+  Scale 3.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Brain 20163
+{
+  Health 2
+  Radius 10
+  Height 10
+  Scale 3.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Apple 20166
+{
+  Health 2
+  Radius 29
+  Height 29
+  Scale 3.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR AlphabetLetterA 20167
+{
+  Health 2
+  Radius 32
+  Height 32
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR AlphabetLetterB 20165
+{
+  Health 2
+  Radius 32
+  Height 32
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Anchor 20168
+{
+  Health 2
+  Radius 55
+  Height 55
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR ONAF3Ant 20169
+{
+  Health 2
+  Radius 55
+  Height 55
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR ONAFBRIDGE 20170
+{
+  RenderRadius 100
+  Health 2
+  Radius 5
+  Height 5
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR STAR 20171
+{
+  Radius 11
+  Height 11
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR CYLINDERTOY 20172
+{
+  Radius 11
+  Height 11
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR CRYSTAL2 20173
+{
+  Radius 11
+  Height 11
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR CRYSTAL1 20174
+{
+  Radius 11
+  Height 11
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Bag 20175
+{
+  Radius 13
+  Height 13
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Piggy 20178
+{
+  Radius 14
+  Height 14
+  Scale 1.2
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Alien 20177
+{
+  Radius 14
+  Height 14
+  Scale 1.2
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR WizardHat 20176
+{
+  Radius 12
+  Height 12
+  Scale 1.2
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Sink 20179
+{
+  Radius 14
+  Height 14
+  Scale 1.2
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Bath 20180
+{
+  Radius 10
+  Height 10
+  Scale 1.1
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FireplaceFire 20181
+{
+  Radius 15
+  Height 15
+  Scale 0.8
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	FIR1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2
+	FIR2 ABCDEFGHIJKLMNOPQRSTUVWX 2
+	Loop
+  }
+}
+
+ACTOR LaserDmg 20182
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  MeleeRange 32
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+	CYBI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 32, 0, 360, "Melee")
+	Loop
+  Melee:
+    CYBI A 10 A_CustomMeleeAttack(25, "", "", "none", false)
+    Loop
+  }
+}
+
+ACTOR Furnace 20183
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR AmbienceActor 20186
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR LulActor 20185
+{
+  Radius 16
+  Height 16
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1 
+    Stop
+  }
+}
+
+ACTOR PowerOutLulActor 20184
+{
+  Radius 16
+  Height 16
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1 
+    Stop
+  }
+}
+
+ACTOR HW1FreddyPlush 20187
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR ONAF2FreddyHead 20188
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A 1
+    Wait
+  Off:
+	CYBA A 1
+	Wait
+  }
+}
+
+ACTOR ONAF2Light 20189
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A 1
+    Wait
+  Off:
+	CYBA A 1
+	Wait
+  }
+}
+
+ACTOR Tentacles01 20190
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterDonkeyKong 20310
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterONAF3Ending 20311
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterBonequinhos 20312
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterMap 20193
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterDog 20192
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR WoodenLog 20191
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterPapers 20195
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR PosterClown 20196
+{
+  Radius 15
+  Height 15
+  Scale 3.77
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR CheckDoorProxHit 20197
+{
+  Radius 28
+  Height 0
+  Scale 1.0
+  -SOLID
+  States
+  {
+  Spawn:
+    CYBI A 1 A_ChangeVelocity(0,0,99,1)
+    Loop
+  }
+}
+
+ACTOR OfficeChair 19262
+{
+  Radius 16
+  Height 16
+  scale 0.6
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF1Camera 19291
+{
+  Health 5
+  Radius 4
+  Height 4
+  scale 1.2
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  +DONTTHRUST
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Chair 19243
+{
+  Radius 16
+  Height 16
+  scale 1.2
+  +NOINTERACTION
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Couch 19321
+{
+  Radius 4
+  Height 4
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Desk 13014
+{
+  Game Doom
+  Health 5
+  Mass 0x7fffffff
+  Scale 0.8
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR DrinkingFountain 11018
+{
+  Radius 8
+  Height 16
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF3Pipes1 20264
+{
+  Radius 16
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Pipes2 20265
+{
+  Radius 8
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Pipes3 20266
+{
+  Radius 8
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Pipes4 20267
+{
+  Radius 16
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Pipes5 20268
+{
+  Radius 16
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Pipes6 20269
+{
+  Radius 15
+  Height 15
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+actor pipes_wall_01 20274
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipes_wall_02 20275
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipes_wall_03 20276
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipes_wall_04 20277
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipes_wall_05 20278
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_01 20279
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_tall_01 20280
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_02 20281
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_tall_02 20282
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_corner_01 20283
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_corner_02 20284
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+actor pipe_heavy_corner_03 20285
+{
+  Game Doom
+  Radius 4
+  Height 4
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF1RepairTable 20194
+{
+  Radius 15
+  Height 15
+  Scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Shelf_Unit_01 19293
+{
+  Radius 16
+  Height 32
+  scale 3.5
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Shelf_Unit_02 19294
+{
+  Radius 16
+  Height 32
+  scale 3.5
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Shelf_Boxes 19295
+{
+  Radius 16
+  Height 32
+  scale 3.5
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Locker 19246
+{
+  Radius 16
+  Height 32
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR MagazineRack 11036
+{
+  Radius 8
+  Height 16
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF3Light 19241
+{
+  Radius 6
+  Height 6
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Fence01 20261
+{
+  Radius 5
+  Height 5
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Fence02 20262
+{
+  Radius 5
+  Height 5
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR Fence03 20263
+{
+  Radius 16
+  Height 16
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF3Crate1 19305
+{
+  Radius 32
+  Height 32
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+
+ACTOR FNAF3Boxes1 19252
+{
+  Radius 16
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF3Boxes2 19253
+{
+  Radius 16
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF3ElectricalBox1 19254
+{
+  Radius 4
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR FNAF3ElectricalBox2 19255
+{
+  Radius 4
+  Height 16
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+
+
+
+
+
+ACTOR Urinal 19227
+{
+	Radius 16
+	Height 16
+	Scale 10.0
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR TocaDiscos 19228
+{
+	Radius 16
+	Height 16
+	Scale 10.0
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CactusPot 19229
+{
+	Radius 4
+	Height 32
+	Scale 1.0
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR FNAF1ButtonPlate 19301
+{
+  Radius 4
+  Height 32
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A -1
+	Stop
+  }
+}
+
+ACTOR FNAF1Button 19302
+{
+  Radius 4
+  Height 32
+  scale 1.0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI A 1
+	Goto Off
+  On:
+	"####" "#" 2
+	CYBI B 1
+	Wait
+  Off:
+	"####" "#" 2
+	CYBI A 1
+	Wait
+  }
+}
+
+ACTOR Fan 11010
+{
+  Radius 8
+  Height 8
+  scale 42.0
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    TNT1 A 0 A_PlaySound ("DeskFan",5,1.0,TRUE)
+    CYBI ABCDEFGHIJKLMNOPQRSTUVWXYZ 1
+	CYBA ABC 1
+    Loop
+  }
+}
+
+ACTOR BeaverNewspaper 18900
+{
+	Radius 18
+	Height 18
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A 0
+		CYBI ABCDEFGHIJK 1
+		CYBI K -1
+		Stop
+	}
+}
+
+ACTOR ClownProxIn 19000
+{
+	Radius 4
+	Height 4
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR ClownProxOut 19001
+{
+	Radius 4
+	Height 4
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR OwlProxIn 19003
+{
+	Radius 4
+	Height 4
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Stop
+	}
+}
+
+
+ACTOR OwlProxOut 19004
+{
+	Radius 4
+	Height 4
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR DoorFrame 19002
+{
+  RenderRadius 50
+  Radius 1
+  Height 1
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  -SOLID
+  +NOCLIP
+  +NODAMAGE
+  +NOINTERACTION
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Cell2 : Ammo
+{
+
+  Inventory.PickupMessage "Picked up a flashlight battery."
+  Inventory.Amount 999
+  Inventory.MaxAmount 999
+  Ammo.BackpackAmount 100
+  Ammo.BackpackMaxAmount 999
+  Inventory.Icon "CELLA0"
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Cell3 : Ammo
+{
+
+  Inventory.PickupMessage "Picked up a flash beacon fuse."
+  Inventory.Amount 999
+  Inventory.MaxAmount 999
+  Ammo.BackpackAmount 100
+  Ammo.BackpackMaxAmount 999
+  Inventory.Icon "CELLA0"
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}
+
+ACTOR Toilet 10010
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CaveRocks 10011
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CaveRocks2 10012
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CeilingStars 10013
+{
+  Radius 32
+  RenderRadius 32
+  Height 128
+  scale 1.0
+  +NOINTERACTION
+  +NOGRAVITY
+  +NOBLOCKMAP
+  States
+  {
+  Spawn:
+	CYBI A 1 A_Jump(256,"Idle1","Idle2","Idle3","Idle4")
+	Wait
+  Idle1:
+	CYBI ABCDEFGHIJKLMNOPQRST 12
+	Goto Spawn
+  Idle2:
+	CYBI UVWXYZ 12
+	CYBA ABCDEFGHIJKLMN 12
+	Goto Spawn
+  Idle3:
+	CYBA OPQRSTUVWXYZ 12
+	CYBB ABCDEFGH 12
+	Goto Spawn
+  Idle4:
+	CYBB IJKLMNOPQRSTUVWXYZ 12
+	CYBC AB 12
+	Goto Spawn
+	}
+}
+
+ACTOR Vent 10014
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR WallSun 10015
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CloudThing 10016
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR Conduit 10017
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR Bench 10018
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR Balloons 10019
+{
+	Radius 16
+	Height 16
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CeilingStars2 10020
+{
+  Radius 4
+  Height 4
+  scale 1.7
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOTELEPORT
+  +CANNOTPUSH
+  States
+  {
+  Spawn:
+    CYBI ABCDEFGHIJKLMNOPQRSTUVWXYZ 12
+	CYBA ABCDEFGHIJKLMNOPQRSTUVWXYZ 12
+	CYBB ABCDEFGHIJKLMNOPQRSTUVWXYZ 12
+	CYBC ABCDEFGHIJKLMNOPQRSTUVWXYZ 12
+	CYBD ABCDEFGHI 12
+    Loop
+	}
+}
+
+ACTOR ONAFPhone 10021
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A 1
+		CYBI A 0 A_CheckProximity("PlayAudio", "ThePlayer", 1024.0, 1, 0, AAPTR_DEFAULT)
+		Loop
+	PlayAudio:
+		CYBI A 0 A_PlaySound("FlumptyCall", 0, 2.0)
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFPhoneHardBoiled 19280
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A 1
+		CYBI A 0 A_CheckProximity("PlayAudio", "ThePlayer", 1024.0, 1, 0, AAPTR_DEFAULT)
+		Loop
+	PlayAudio:
+		CYBI A 0 A_PlaySound("HardCall", 0, 2.0)
+		CYBI A -1
+		Stop
+	}
+}
+
+
+ACTOR Phone 19281
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF2GrunkfussFrame 19282
+{
+	Radius 2
+	Height 2
+	Scale 1.0
+	RenderRadius 50
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+
+ACTOR BowlingPin 19283
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR LettersToy 19284
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR CoffeeMug 19285
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+
+ACTOR ONAFRevolver 19286
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFPumpkin 19287
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR PigPlush 19288
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR LeopardHead 19289
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFRainbow 19290
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFWrench 19292
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFPlant 18927
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFCastle 18928
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAFRedShroom 18929
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF2Hamburguer 18930
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF2KetchupBottle 18931
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF2CocaCan 18932
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1OfficeBra 18933
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1OfficeUnderpants 18934
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1ChristmasHat 18935
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1Banana 18936
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1Toaster 18937
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1OfficeKey 18938
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONAF1MusicBox 18939
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR ONaF1Sandwich 18940
+{
+	Radius 20
+	Height 20
+	Scale 1.0
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+CANNOTPUSH
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
+}
+
+ACTOR WallPizza4 11048
+{
+  Radius 15
+  Height 4
+  scale 1.2
+  +NOGRAVITY
+  +NOBLOCKMAP
+  +NOCLIP
+  +NODAMAGE
+  States
+  {
+  Spawn:
+    CYBI A -1
+    Stop
+  }
+}

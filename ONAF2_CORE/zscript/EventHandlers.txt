@@ -1,0 +1,16 @@
+class HeadBobbing : EventHandler
+{
+	double targetFOV;
+	double currentFOV;
+	override void WorldTick()
+	{
+		let p = players[consoleplayer];
+		if (p == null || p.mo == null) { return; }
+		bool isRunning = (p.mo.vel.Length() > 2.1 && p.cmd.forwardmove > 0 || p.cmd.forwardmove < 0 || p.cmd.sidemove > 0 || p.cmd.sidemove < 0);
+		If (isRunning && (p.cmd.buttons & BT_RUN)) { targetFOV = 85; }
+		Else { targetFOV = 75; }
+		currentFOV = lerp(currentFOV, targetFOV, 0.15);
+		p.SetFOV(currentFOV);
+	}
+	double lerp(double a, double b, double f) { return a + (b - a) * min(f, 1.0); }
+}

@@ -1,0 +1,51 @@
+Class IsIntro : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class Blackout : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsDark : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class FlashlightOn : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsChasingFast : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsChasingSlow2 : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsChasingFast2 : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class BeaverHasHitDoor : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsOut : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsSmacked : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsGrabbed : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsJumped : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsZoey : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsLouis : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsBill : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsFrancis : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsNick : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsEllis : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsCoach : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsRochelle : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsSmith : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class HourPlusOne : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class IsDrainPower : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class FlashlightStop : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class FlashlightWalk : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }
+
+Class FlashlightRun : Inventory { Default { Inventory.Amount 1; Inventory.MaxAmount 1; Inventory.UseSound ""; Inventory.PickupSound ""; Inventory.PickupMessage ""; } }

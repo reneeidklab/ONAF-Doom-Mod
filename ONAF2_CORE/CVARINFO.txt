@@ -1,0 +1,15 @@
+//LiveReverb
+user bool LR_lowhealth = false;
+user bool LR_invul = true;
+
+//Body
+user bool cl_hidelegs = false;
+
+//Nametag
+user bool cl_nametag = FALSE;
+
+//Player AFK
+Server Bool PLAYER_AFK = FALSE;
+
+//ONAF 1 Eyesaur
+Server Bool ONAF1_EYESAUR_ENEMY = FALSE;

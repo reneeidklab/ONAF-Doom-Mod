@@ -1,0 +1,133 @@
+//-------------------------------------------------------------------------------------------
+//
+// Brightmap
+//
+//-------------------------------------------------------------------------------------------
+
+brightmap texture LAVAROCK { map "textures/LAVAROCK.jpg" }
+
+brightmap texture LAVA { map "textures/LAVA.png" }
+
+brightmap texture LPLAVA { map "textures/LPLAVA.png" }
+
+brightmap texture EYESAUE { map "textures/EYESAUE.jpg" }
+
+brightmap texture LASER01 { map "textures/LASER01.png" }
+
+brightmap texture VIRTWALL { map "textures/VIRTWALL.jpg" }
+
+brightmap texture "Models/Characters/Bill/BillHead.jpg" { map "Models/Characters/Bill/BillHead_BM.jpg" }
+
+brightmap texture "Models/Scenery/Phone/Orange.png" { map "Models/Scenery/Phone/Orange.png" }
+
+brightmap texture "Models/Scenery/Phone/greenglow.png" { map "Models/Scenery/Phone/greenglow.png" }
+
+brightmap texture "Models/Enemys/Flumpty/Glow.png" { map "Models/Enemys/Flumpty/Glow.png" }
+
+brightmap texture "Models/Enemys/Redman/RedmanHead.jpg" { map "Models/Enemys/Redman/RedmanHead_BM.jpg" }
+
+brightmap texture "Models/Enemys/Pumpkin/Pumpking.jpg" { map "Models/Enemys/Pumpkin/Pumpking_BM.jpg" }
+
+brightmap texture "Models/Enemys/GoldenFlumpty/Body.jpg" { map "Models/Enemys/GoldenFlumpty/Body.jpg" }
+
+brightmap texture "Models/Enemys/GoldenFlumpty/Eye.jpg" { map "Models/Enemys/GoldenFlumpty/Eye.jpg" }
+
+brightmap texture "Models/Scenery/Button/FNAF1Button.jpg" { map "Models/Scenery/Button/Button_BM.jpg" }
+
+brightmap texture "Models/Scenery/Caves/crystal_crystal_BaseColor.jpg" { map "Models/Scenery/Caves/crystal_crystal_BaseColor.jpg" }
+
+brightmap texture "Models/Scenery/Caves/standardSurface1.jpg" { map "Models/Scenery/Caves/standardSurface1.jpg" }
+
+brightmap texture "Models/Scenery/ONaF1Office/Toaster.jpg" { map "Models/Scenery/ONaF1Office/Toaster_BM.jpg" }
+
+//-------------------------------------------------------------------------------------------
+//
+// Lights
+//
+//-------------------------------------------------------------------------------------------
+
+pointlight BONNIELIGHTNEW { color 7.3 0.0 0.0 Offset 32 84 0 size 128 attenuate 1 Spot 6 128 }
+
+flickerlight DOMELIGHT { color 1.0 1.0 1.0 offset 0 -56 0 size 126 secondarysize 134 chance 0.02 attenuate 1 }
+
+pointlight FLASHLIGHT1 { color 0.6 0.6 0.6 size 25 attenuate 1 }
+
+pointlight FLASHLIGHT2 { color 0.6 0.6 0.6 size 25 attenuate 1 }
+
+pointlight FIREPLACE { color 1.0 0.8 0.0 offset 0 0 0 size 200 attenuate 1 }
+
+pointlight DOMESHADOW { color 0.5 0.5 0.5 size 28 offset 0 16 0 subtractive 1 attenuate 1 }
+
+Pointlight WhiteSparkFlare { Color 1.0 1.0 1.0 Size 12 }
+
+pointlight REDBUTTONLIGHT { color 0.3 0.0 0.0 size 16 attenuate 1 }
+
+pointlight PURPLELIGHT1 { color 0.4 0.0 0.4 size 128 attenuate 1 }
+
+pointlight PURPLELIGHT2 { color 0.3 0.0 0.3 size 96 attenuate 1 }
+
+pointlight GREENLIGHT1 { color 0.0 0.4 0.0 size 128 attenuate 1 }
+
+pointlight GREENLIGHT2 { color 0.0 0.3 0.0 size 96 attenuate 1 }
+
+pointlight YELLOWLIGHT1 { color 0.4 0.4 0.0 size 128 attenuate 1 }
+
+pointlight YELLOWLIGHT2 { color 0.3 0.3 0.0 size 96 attenuate 1 }
+
+pointlight REDMANX { color 0.9 0.0 0.0 size 75 attenuate 1 }
+
+//-------------------------------------------------------------------------------------------
+//
+// Actors
+//
+//-------------------------------------------------------------------------------------------
+
+object Redman { frame M000 { light BONNIELIGHTNEW } }
+
+object FNAF1BUTTON { frame CYBI { light REDBUTTONLIGHT } }
+
+object CRYSTAL1 { frame CYBI { light PURPLELIGHT1 } }
+
+object CRYSTAL2 { frame CYBI { light PURPLELIGHT1 } }
+
+object FireplaceFire { frame FIR1 { light FIREPLACE } frame FIR2 { light FIREPLACE } }
+
+object ONAF2Light { frame CYBI { light DOMELIGHT } frame CYBA { light DOMESHADOW } }
+
+/*object RedLightLight2 { frame TNT1A { light REDLIGHT2 } }
+
+object FlashLightLight { frame TNT1A { light FLASHLIGHT2 } frame BLNKA { light FLASHLIGHT1 } }
+
+object FlashLightLight2 { frame TNT1A { light FLASHLIGHT2 } }*/
+
+object PurpleLight { frame TNT1A { light PURPLELIGHT2 } frame BLNKA { light PURPLELIGHT1 } }
+
+object PurpleLight2 { frame TNT1A { light PURPLELIGHT2 } }
+
+object PurpleLightFlare { frame LEYS { light PURPLELIGHT1 } }
+
+object GreenLight { frame TNT1A { light GREENLIGHT2 } frame BLNKA { light GREENLIGHT1 } }
+
+object GreenLight2 { frame TNT1A { light PURPLELIGHT2 } }
+
+object GreenLightFlare { frame LEYS { light GREENLIGHT1 } }
+
+object Redman2 { frame TNT1A { light REDMANX } }
+
+object YellowLight { frame TNT1A { light YELLOWLIGHT2 } frame BLNKA { light YELLOWLIGHT1 } }
+
+object YellowLight2 { frame TNT1A { light YELLOWLIGHT2 } }
+
+object YellowLightFlare { frame LEYS { light YELLOWLIGHT1 } }
+
+Object SparkFlare_W1 { Frame SPKW { Light WhiteSparkFlare } }
+
+Object SparkFlare_W2 { Frame SPKW { Light WhiteSparkFlare } }
+
+Object SparkFlare_W3 { Frame SPKW { Light WhiteSparkFlare } }
+
+Object SparkFlare_W4 { Frame SPKW { Light WhiteSparkFlare } }
+
+Object SparkFlare_W5 { Frame SPKW { Light WhiteSparkFlare } }
+
+Object SparkFlare_W6 { Frame SPKW { Light WhiteSparkFlare } }

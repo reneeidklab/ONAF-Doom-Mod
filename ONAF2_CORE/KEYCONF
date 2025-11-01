@@ -1,0 +1,4 @@
+clearplayerclasses
+addplayerclass ThePlayer
+WeaponSection FNAF
+SetSlot 1 "Flashlight"

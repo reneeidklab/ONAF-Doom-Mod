@@ -1,0 +1,294 @@
+graphic M_MODOPT, 431, 76
+{
+	XScale 5.000
+	YScale 5.000
+}
+
+texture CLOUDSKY, 800, 100
+{
+   XScale 1
+   YScale 1
+   Patch CLOUDSKY, 0, 0
+}
+
+texture GLAS1, 512, 512
+{
+   XScale 4
+   YScale 4
+   Patch GLAS1, 0, 0
+}
+
+Texture "CONCWALL", 1024, 1024
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CONCWALL", 0, 0
+}
+
+Texture "FTILES3", 1024, 1024
+{
+	XScale 8.000
+	YScale 8.000
+	Patch "FTILES3", 0, 0
+}
+
+Texture "FTILES1", 1024, 1024
+{
+	XScale 12
+	YScale 12
+	Patch "FTILES1", 0, 0
+}
+
+Texture "CARPETS1", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS1", 0, 0
+}
+
+Texture "CARPETS2", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS2", 0, 0
+}
+
+Texture "CARPETS3", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS3", 0, 0
+}
+
+Texture "CARPETS4", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS4", 0, 0
+}
+
+Texture "CARPETS5", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS5", 0, 0
+}
+
+Texture "METL1", 1024, 1024
+{
+	XScale 8.000
+	YScale 8.000
+	Patch "METL1", 0, 0
+}
+
+Texture "METL2", 1024, 1024
+{
+	XScale 8.000
+	YScale 8.000
+	Patch "METL2", 0, 0
+}
+
+Texture "CONC1", 1024, 1024
+{
+	XScale 8.000
+	YScale 8.000
+	Patch "CONC1", 0, 0
+}
+
+Texture "LAVAROCK", 512, 512
+{
+	XScale 8.000
+	YScale 8.000
+	Patch "LAVAROCK", 0, 0
+}
+
+Texture "STARCEIL", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "STARCEIL", 0, 0
+}
+
+Texture "STARWALL", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "STARWALL", 0, 0
+}
+
+Texture "CONC2", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CONC2", 0, 0
+}
+
+Texture "BLACK", 32, 16
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "BLACK", 0, 0
+}
+
+Texture "CLOWNWA1", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CLOWNWA1", 0, 0
+}
+
+Texture "CLOWNWA2", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CLOWNWA2", 0, 0
+}
+
+Texture "EYESAUE", 730, 470
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "EYESAUE", 0, 0
+}
+
+Texture "ICETEX", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "ICETEX", 0, 0
+}
+
+Texture "TDIRT", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "TDIRT", 0, 0
+}
+
+Texture "LASER01", 2, 2
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "LASER01", 0, 0
+}
+
+Texture "PUZZLE1", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "PUZZLE1", 0, 0
+}
+
+Texture "PUZZLE2", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "PUZZLE2", 0, 0
+}
+
+Texture "OWOOD1", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "OWOOD1", 0, 0
+}
+
+Texture "PALHACO0", 512, 320
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "PALHACO0", 0, 0
+}
+
+Texture "FWALL1", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL1", 0, 0
+}
+
+Texture "FWALL2", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL2", 0, 0
+}
+
+Texture "FWALL3", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL3", 0, 0
+}
+
+Texture "FWALL4", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL4", 0, 0
+}
+
+Texture "FWALL5", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL5", 0, 0
+}
+
+Texture "FWALL6", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "FWALL6", 0, 0
+}
+
+Texture "VIRTWALL", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "VIRTWALL", 0, 0
+}
+
+Texture "GREENWA", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "GREENWA", 0, 0
+}
+
+Texture "YELLWALL", 512, 512
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "YELLWALL", 0, 0
+}
+
+Texture "CARPETS6", 512, 512
+{
+	XScale 4.000
+	YScale 4.000
+	Patch "CARPETS6", 0, 0
+}
+
+Texture "OWLVENT1", 738, 743
+{
+	XScale 7
+	YScale 7
+	Patch "OWLVENT1", 0, 0
+}
+
+Texture "OWLVENT2", 738, 743
+{
+	XScale 7
+	YScale 7
+	Patch "OWLVENT2", 0, 0
+}
+
+Texture "CONC4", 512, 512
+{
+	XScale 3
+	YScale 3
+	Patch "CONC4", 0, 0
+}
+
+// End of texture definitions

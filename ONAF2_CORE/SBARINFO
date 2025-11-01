@@ -1,0 +1,15 @@
+Statusbar FullScreen, FullScreenOffsets
+{
+	//Bottom Left
+	//Lives from Inventory with Icon
+	DrawSwitchableImage weaponslot 1, "BLNKA0", "FLSHLGHT", 6, -85;
+	drawnumber 4, HUDFONT_DOOM, untranslated, Ammo1, drawshadow, 62, -20;
+}
+
+Statusbar normal
+{
+	//Bottom Left
+	//Lives from Inventory with Icon
+	DrawSwitchableImage weaponslot 1, "BLNKA0", "FLSHLGHT", -280, 15;
+	drawnumber 4, HUDFONT_DOOM, untranslated, Ammo1, drawshadow, -280, 115;
+}

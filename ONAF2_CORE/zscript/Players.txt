@@ -1,0 +1,766 @@
+//-------------------------------------------------------------------------------------------
+//
+// Player
+//
+//-------------------------------------------------------------------------------------------
+
+class ThePlayer : PlayerPawn
+{
+	StateLabel p_anim;
+	ThePlayerBody Legs;
+	bool LegsAlreadySpawned;
+	Bool CheckFloorTexture(String texName)
+    {
+        String floorTex = TexMan.GetName(self.floorpic);
+        return (floorTex == texName);
+    }
+	
+	void PlayerVoid()
+	{
+		If (Self.Health > 0)
+		{
+			If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Zoey","ONAFZoey.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Zoey","ONAFZoeyBody.iqm");  }
+			}
+			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Louis","ONAFLouis.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Louis","ONAFLouisBody.iqm");  }
+			}
+			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Bill","ONAFBill.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Bill","ONAFBillBody.iqm");  }
+			}
+			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Francis","ONAFFrancis.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Francis","ONAFFrancisBody.iqm");  }
+			}
+			Else If (CheckInventory("IsNick",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Nick","ONAFNick.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Nick","ONAFNickBody.iqm");  }
+			}
+			Else If (CheckInventory("IsEllis",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Ellis","ONAFEllis.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Ellis","ONAFEllisBody.iqm");  }
+			}
+			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Coach","ONAFCoach.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Coach","ONAFCoachBody.iqm");  }
+			}
+			Else If (CheckInventory("IsRochelle",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Rochelle","ONAFRochelle.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Rochelle","ONAFRochelleBody.iqm");  }
+			}
+			Else If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) 
+			{ 
+				A_ChangeModel("",0,"models/Characters/Smith","ONAFSmith.iqm"); 
+				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Smith","ONAFSmithBody.iqm");  }
+			}
+		}
+	}
+	
+	void FootStep()
+	{
+		If (CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("TileStep",0,0.5); }
+			Else { A_PlaySound("TileStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("CARPETS1") || CheckFloorTexture("CARPETS2") || CheckFloorTexture("CARPETS3") || CheckFloorTexture("CARPETS4") || CheckFloorTexture("CARPETS5") || CheckFloorTexture("CARPETS6"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("CarpetStep",0,0.5); }
+			Else { A_PlaySound("CarpetStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("VentStep",0,0.5); }
+			Else { A_PlaySound("VentStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("GLAS1"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("GlassStep",0,0.5); }
+			Else { A_PlaySound("GlassStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("TDIRT"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("GrassStep",0,0.5); }
+			Else { A_PlaySound("GrassStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("CONC1"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("StoneStep",0,0.5); }
+			Else { A_PlaySound("StoneStep",0,1.0); }
+		}
+		Else If (CheckFloorTexture("OWOOD1"))
+		{
+			If (Player.ViewHeight < 46) { A_PlaySound("WoodStep",0,0.5); }
+			Else { A_PlaySound("WoodStep",0,1.0); }
+		}
+	}
+	void LandStep()
+	{
+		A_PlaySound("JumpLanding",0,1.0);
+		A_ScaleVelocity(0.34);
+		If (CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
+		{
+			A_PlaySound("TileStep",0,1.5);
+			A_PlaySound("TileStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("CARPETS1") || CheckFloorTexture("CARPETS2") || CheckFloorTexture("CARPETS3") || CheckFloorTexture("CARPETS6"))
+		{
+			A_PlaySound("CarpetStep",0,1.5);
+			A_PlaySound("CarpetStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
+		{
+			A_PlaySound("VentStep",0,1.5);
+			A_PlaySound("VentStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("GLAS1"))
+		{
+			A_PlaySound("GlassStep",0,1.5);
+			A_PlaySound("GlassStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("TDIRT"))
+		{
+			A_PlaySound("GrassStep",0,1.5);
+			A_PlaySound("GrassStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("CONC1"))
+		{
+			A_PlaySound("StoneStep",0,1.5);
+			A_PlaySound("StoneStep",0,1.5);
+		}
+		Else If (CheckFloorTexture("OWOOD1"))
+		{
+			A_PlaySound("WoodStep",0,1.5);
+			A_PlaySound("WoodStep",0,1.5);
+		}
+	}
+	
+	/*
+	void SpawnLegs(void)
+	{
+		if (LegsAlreadySpawned)
+			return;
+		Legs = ThePlayerBody(Spawn("ThePlayerBody", Pos, ALLOW_REPLACE));
+		if (Legs)
+		{
+			Legs.Master = self;
+			Legs.Angle = Angle;
+			LegsAlreadySpawned = true;
+			Legs = legs;
+		}
+	}
+	*/
+	
+    void DestroyLegs(void) { if (!Legs) { Legs = null; LegsAlreadySpawned = false; } }
+	void SyncLegsState() { if (Legs && p_anim != Legs.p_anim) { if (Legs.p_anim = p_anim) { Legs.SetStateLabel(p_anim); } } }
+	
+	
+	override void DeathThink() { if(player)player.cmd.buttons&=~BT_USE; super.DeathThink(); }
+	override void Tick()
+	{
+		super.Tick();
+		if (!Player || (Player.cheats & CF_PREDICTING)) { return; }
+		PlayerVoid();
+		StateLabel last_anim = p_anim;
+		int buttons = GetPlayerInput(INPUT_BUTTONS);
+		bool death = Player.Health <= 0;
+		Bool Running = vel.xy.Length() > 4.9 && (buttons & BT_Run) != 0;
+		Bool Walking = vel.xy.Length() > 0.01;
+		Bool SButton = GetPlayerInput(INPUT_FORWARDMOVE) < 0;
+		Bool WButton = GetPlayerInput(INPUT_FORWARDMOVE) > 0;
+		Bool AButton = GetPlayerInput(INPUT_SIDEMOVE) < 0;
+		Bool DButton = GetPlayerInput(INPUT_SIDEMOVE) > 0;
+		bool onground = vel.z <= 0 && (pos.z == FloorZ || !TestMobjZ()) && !death;
+		bool crouching = Player.ViewHeight <= 46 && !death;
+		bool turn_left = GetPlayerInput(INPUT_YAW) > 0.5 && !death && !CheckInventory("IsIntro", 1, AAPTR_DEFAULT);
+		bool turn_right = GetPlayerInput(INPUT_YAW) < -0.5 && !death && !CheckInventory("IsIntro", 1, AAPTR_DEFAULT);
+		bool death_grab = CheckInventory("IsGrabbed", 1, AAPTR_DEFAULT);
+		bool death_jump = CheckInventory("IsJumped", 1, AAPTR_DEFAULT);
+		bool death_smack = CheckInventory("IsSmacked", 1, AAPTR_DEFAULT);
+		bool Idle;
+		bool IdlePivotRight;
+		bool IdlePivotLeft;
+		bool chasecam = player.cheats & CF_CHASECAM && !death;
+		//if (!LegsAlreadySpawned) { SpawnLegs(); }
+		if (!legs || legs.bDestroyed) { DestroyLegs(); }
+		if (Legs) { Legs.SetOrigin(Pos, true); Legs.Angle = Angle; SyncLegsState(); }
+		
+		if (!chasecam)
+        {
+            if (GetCVar("cl_hidelegs")) { if (Legs) { Legs.A_SetRenderStyle(0.0,STYLE_None); } }
+            else { if (Legs) { Legs.A_SetRenderStyle(1.0,STYLE_Normal); } }
+        }
+		if (chasecam || death) { if (Legs) { Legs.A_SetRenderStyle(0.0,STYLE_None); } }
+		
+		If (CheckInventory("IsBill",1,AAPTR_DEFAULT) && !death)
+		{
+			If (crouching) { A_SpawnItemEx ("BillSmoke", 7, 5, 27, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
+			Else { A_SpawnItemEx ("BillSmoke", 7, 2.5, 62, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
+		}
+		If (CheckInventory("Flashlight",1,AAPTR_DEFAULT))
+		{
+			If (Running && !Crouching)
+			{
+				A_GiveInventory("FlashlightRun",1);
+				A_TakeInventory("FlashlightStop",1);
+				A_TakeInventory("FlashlightWalk",1);
+			}
+			Else If (Walking)
+			{
+				A_GiveInventory("FlashlightWalk",1);
+				A_TakeInventory("FlashlightStop",1);
+				A_TakeInventory("FlashlightRun",1);
+			}
+			Else If (!Walking)
+			{
+				A_GiveInventory("FlashlightStop",1);
+				A_TakeInventory("FlashlightWalk",1);
+				A_TakeInventory("FlashlightRun",1);
+			}
+		}
+		if (death)
+		{
+			if (death_jump) { p_anim = 'DeathJumpLoop'; }
+			else if (death_grab) { p_anim = 'DeathGrabLoop'; }
+			else if (death_smack) { p_anim = 'DeathSmackLoop'; }
+			else { p_anim = 'DeathJumpLoop'; }
+		}
+		else if (!death && death_jump) { p_anim = 'DeathJump'; }
+		else if (!death && death_grab) { p_anim = 'DeathGrab'; }
+		else if (!death && death_smack) { p_anim = 'DeathSmack'; }	
+		else if (!onground)
+		{
+			if (vel.z > 0 || last_anim == "Jump") { p_anim = "Jump"; }
+			else { p_anim = "Fall"; }
+		}
+		else if (last_anim == "Jump" || (p_anim == "Land" && InStateSequence(CurState, ResolveState("Land")))) { p_anim = "Land"; }
+		else if (crouching)
+		{
+			if (Walking)
+			{
+				If (WButton)
+					p_anim = 'CrouchWalk';
+				Else If (SButton)
+					p_anim = 'CrouchWalkBack';
+				Else If (DButton)
+					p_anim = 'CrouchWalkRight';
+				Else If (AButton)
+					p_anim = 'CrouchWalkLeft';
+			}
+			else
+			{
+				if ((last_anim == "CrouchPivotLeft" || last_anim == "CrouchPivotRight") && InStateSequence(CurState, ResolveState("Crouch"))) { last_anim = "CrouchIdle"; }
+				if (turn_left || last_anim == "CrouchPivotLeft") { p_anim = "CrouchPivotLeft"; }
+				else if (turn_right || last_anim == "CrouchPivotRight") { p_anim = "CrouchPivotRight"; }
+				else { p_anim = "Crouch"; }
+			}
+		}
+		else if (last_anim == "Crouch" || (p_anim == "UnCrouch" && InStateSequence(CurState, ResolveState("UnCrouch")))) { p_anim = "UnCrouch"; }		
+		else if (running)
+		{
+			If (WButton)
+				p_anim = 'Run';
+			Else If (SButton)
+				p_anim = 'RunBack';
+			Else If (DButton)
+				p_anim = 'RunRight';
+			Else If (AButton)
+				p_anim = 'RunLeft';
+		}
+		else if (Walking)
+		{
+			If (WButton)
+				p_anim = 'Walk';
+			Else If (SButton)
+				p_anim = 'WalkBack';
+			Else If (DButton)
+				p_anim = 'WalkRight';
+			Else If (AButton)
+				p_anim = 'WalkLeft';
+		}
+		else
+		{
+			if ((last_anim == "IdlePivotLeft" || last_anim == "IdlePivotRight") && InStateSequence(CurState, ResolveState("Idle"))) { last_anim = "Idle"; }
+			if (turn_left || last_anim == "IdlePivotLeft") { p_anim = "IdlePivotLeft"; }
+			else if (turn_right || last_anim == "IdlePivotRight") { p_anim = "IdlePivotRight"; }
+			else if (!death || !death_grab || !death_jump || !death_smack) { p_anim = "Idle"; }
+		}
+		if (last_anim != p_anim || InStateSequence(CurState, ResolveState("Spawn"))) { SetStateLabel(p_anim); }
+	}
+	Default
+	{
+		Speed 1;
+		Health 100;
+		Radius 15;
+		Height 66;
+		Mass 200;
+		DamageFactor "Friendly", 0;
+		PainChance 0;
+		Scale 1.0;
+		Species "Flumpty's Friend";
+		MaxStepHeight 24;
+		MaxDropOffHeight 24;
+		+NOPAIN
+		+DECOUPLEDANIMATIONS
+		Player.JumpZ 8.7;
+		Friction 0.9;
+		Player.ForwardMove 11.2, 9.5;
+		Player.SideMove 11.2, 9.5;
+		Player.ColorRange 0, 0;
+		Player.AttackZOffset 30;
+		Player.ViewHeight 71;
+		Player.StartItem "IsIntro", 1;
+		Player.DisplayName "Flumpty's Friend";
+		Player.Soundclass "playersounds";
+	}
+	States
+	{	
+	SetPlayer:
+		M000 A 1 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_INSTANT);
+		Goto Spawn;
+	Spawn:
+	See:
+		M000 A 0 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	
+	Idle:
+		M000 A 0 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+      	M000 A 1;
+      	Loop;
+	IdlePivotRight:
+		M000 A 0 SetAnimation('TurnRight', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto Idle;
+	IdlePivotLeft:
+		M000 A 0 SetAnimation('TurnLeft', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto Idle;
+	WalkLeft:
+		M000 A 1 SetAnimation('WalkLeft', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto WalkLoop;
+	WalkRight:
+		M000 A 1 SetAnimation('WalkRight', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto WalkLoop;
+	Walk:
+		M000 A 1 SetAnimation('WalkFoward', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	WalkLoop:
+		M000 AAAA 1;
+		M000 A 1 FootStep();
+		M000 AA 1;
+		M000 AAAAAAAAAAAA 1;
+		M000 A 1 FootStep();
+		M000 AAAAAAAAAAA 1;
+		Loop;
+	WalkBack:
+		M000 A 0 SetAnimation('WalkBackward', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBD G 1 FootStep();
+		CYBD HIJKLMNOPQRST 1;
+		CYBD U 1 FootStep();
+		CYBD VWXYZ 1;
+		CYBE ABCDEFGHIJ 1;
+		Loop;
+	RunLeft:
+		M000 A 1 SetAnimation('RunLeft', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto RunLoop;
+	RunRight:
+		M000 A 1 SetAnimation('RunRight', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto RunLoop;
+	Run:
+		M000 A 1 SetAnimation('RunFoward', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	RunLoop:
+		CYBE KLMNOPQ 1;
+		CYBE R 1 FootStep();
+		CYBE STUVWXYZ 1;
+		CYBF ABC 1;
+		CYBF D 1 FootStep();
+		CYBF EFGH 1;
+		Loop;
+	RunBack:
+		M000 A 0 SetAnimation('RunBackward', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBH EFGHI 1;
+		CYBH J 1 FootStep();
+		CYBH KLMNOPQRSTUV 1;
+		CYBH W 1 FootStep();
+		CYBH XYZ 1;
+		CYBJ AB 1;
+		Loop;
+	Crouch:
+		M000 A 0 SetAnimation('CrouchIdle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBJ C 6;
+	CrouchIdle:
+		M000 A 0 SetAnimation('CrouchIdle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Loop;
+	CrouchPivotLeft:
+		M000 A 0 SetAnimation('CrouchTurnLeft', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto CrouchIdle;
+	CrouchPivotRight:
+		M000 A 0 SetAnimation('CrouchTurnRight', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto CrouchIdle;
+	UnCrouch:
+		M000 A 0 SetAnimation('Idle', framerate:35, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBI A 6;
+		Goto Idle;
+	RunLeft:
+		M000 A 1 SetAnimation('RunLeft', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto RunLoop;
+	RunRight:
+		M000 A 1 SetAnimation('RunRight', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto RunLoop;
+	CrouchWalkLeft:
+		M000 A 0 SetAnimation('CrouchWalkLeft', framerate:17.5, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto CrouchWalkLoop;
+	CrouchWalkRight:
+		M000 A 0 SetAnimation('CrouchWalkRight', framerate:17.5, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		Goto CrouchWalkLoop;
+	CrouchWalk:
+		M000 A 0 SetAnimation('CrouchWalkFoward', framerate:17.5, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	CrouchWalkLoop:
+		CYBJ W 2 FootStep();
+		CYBJ XYZ 2;
+		CYBK ABCDE 2;
+		CYBK F 2 FootStep();
+		CYBK GHIJKLMNOP 2;
+		Loop;
+	CrouchWalkBack:
+		M000 A 0 SetAnimation('CrouchWalkBackward', framerate:17.5, interpolatetics:5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBK PONMLKJIHG 2;
+		CYBK F 2 FootStep();
+		CYBK EDCBA 2;
+		CYBJ ZYX 2;
+		CYBJ W 2 FootStep();
+		Loop;
+	Jump:
+		M000 A 0 SetAnimation('Jump', interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		M000 A 1
+		{
+			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithJump"); }
+			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisJump"); }
+			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillJump"); }
+			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachJump"); }
+			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyJump"); }
+			Else If (CheckInventory("IsRochelle",1,AAPTR_DEFAULT)) { A_StartSound("RochelleJump"); }
+			Else If (CheckInventory("IsEllis",1,AAPTR_DEFAULT)) { A_StartSound("EllisJump"); }
+			Else If (CheckInventory("IsNick",1,AAPTR_DEFAULT)) { A_StartSound("NickJump"); }
+			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) { A_StartSound("FrancisJump"); }
+		}
+		M000 AAAAAAAAAA 1;
+		Wait;
+	Fall:
+		M000 A 0 SetAnimation('Fall', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Land:
+		M000 A 0 SetAnimation('Land', interpolatetics:1, flags:SAF_NOOVERRIDE);
+		M000 A 1 LandStep();
+		M000 AAAAA 1;
+		Goto Idle;
+	XDeath:
+	Death:
+		#### # 6
+		{
+			A_PlaySound("GameOverSound",0,1.0);
+			A_PlaySound("DeadTune",0,1.0);
+			if (CheckInventory("IsGrabbed", 1, AAPTR_DEFAULT))
+				SetStateLabel("DeathGrabLoop");
+			if (CheckInventory("IsSmacked", 1, AAPTR_DEFAULT))
+				SetStateLabel("DeathSmackLoop");
+			if (CheckInventory("IsJumped", 1, AAPTR_DEFAULT))
+				SetStateLabel("DeathJumpLoop");
+		}
+	DeathSmack:
+		M000 A 0 SetAnimation('DeathSmack', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 0
+		{
+			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
+			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
+			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
+			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
+			Else If (CheckInventory("IsRochelle",1,AAPTR_DEFAULT)) { A_StartSound("RochelleDie"); }
+			Else If (CheckInventory("IsEllis",1,AAPTR_DEFAULT)) { A_StartSound("EllisDie"); }
+			Else If (CheckInventory("IsNick",1,AAPTR_DEFAULT)) { A_StartSound("NickDie"); }
+			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) { A_StartSound("FrancisDie"); }
+		}
+		CYBE BCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_QuakeEx( 3, 3, 3, 105, 0, 32, "", 0, 1, 1, 1, 0, 0, 3, 1);
+		CYBF BCDEFGHIJKLMNOPQRSTUVW 2;
+	DeathGrabLoop:
+		M000 A 0 SetAnimation('DeathSmack', framerate:35, flags:SAF_NOOVERRIDE);
+		CYBF W 1;
+		Wait;
+	DeathGrab:
+		M000 A 0 SetAnimation('DeathGrab', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 0
+		{
+			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
+			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
+			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
+			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
+			Else If (CheckInventory("IsRochelle",1,AAPTR_DEFAULT)) { A_StartSound("RochelleDie"); }
+			Else If (CheckInventory("IsEllis",1,AAPTR_DEFAULT)) { A_StartSound("EllisDie"); }
+			Else If (CheckInventory("IsNick",1,AAPTR_DEFAULT)) { A_StartSound("NickDie"); }
+			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) { A_StartSound("FrancisDie"); }
+		}
+		CYBN O 2 A_QuakeEx( 3, 3, 3, 105, 0, 32, "", 0, 1, 1, 1, 0, 0, 3, 1);
+		CYBN PQRSTUVWXYZ 2;
+		CYBO ABCDEFGHIJKL 2;
+	//DeathJump Animation
+		M000 A 0 SetAnimation('DeathJump', framerate:35, interpolatetics:0, flags:SAF_NOOVERRIDE);
+		CYBO NOPQRSTUVWXYZ 1;
+		CYBP ABCDEFGHIJ 1;
+	DeathGrabLoop:
+		M000 A 0 SetAnimation('DeathJump', framerate:35, flags:SAF_NOOVERRIDE);
+		CYBP J 1;
+		Wait;
+		
+	DeathJump:
+		M000 A 0 SetAnimation('DeathJump', framerate:35, interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 0
+		{
+			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
+			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
+			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
+			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
+			Else If (CheckInventory("IsRochelle",1,AAPTR_DEFAULT)) { A_StartSound("RochelleDie"); }
+			Else If (CheckInventory("IsEllis",1,AAPTR_DEFAULT)) { A_StartSound("EllisDie"); }
+			Else If (CheckInventory("IsNick",1,AAPTR_DEFAULT)) { A_StartSound("NickDie"); }
+			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) { A_StartSound("FrancisDie"); }
+		}
+		CYBO M 1 A_QuakeEx( 3, 3, 3, 105, 0, 32, "", 0, 1, 1, 1, 0, 0, 3, 1);
+		CYBO NOPQRSTUVWXYZ 1;
+		CYBP ABCDEFGHIJ 1;
+	DeathJumpLoop:
+		M000 A 0 SetAnimation('DeathJump', framerate:35, flags:SAF_NOOVERRIDE);
+		CYBP J 1;
+		Wait;
+	}
+}
+
+//-------------------------------------------------------------------------------------------
+//
+// Player first person body
+//
+//-------------------------------------------------------------------------------------------
+
+class ThePlayerBody : Actor 
+{
+	ThePlayer Master;
+	bool bSpawned;
+	StateLabel p_anim;
+    override void PostBeginPlay()
+    {
+        super.PostBeginPlay();
+        bSpawned = true;
+    }
+	override void Tick()
+	{
+		Super.Tick();
+		if (master && master.player)
+		{
+			Actor cam = players[consoleplayer].camera;
+			bInvisible = (cam != master);
+		}
+	}
+    Default 
+	{
+		Radius 10;
+		Height 20;
+		Scale 1.0;
+		+DECOUPLEDANIMATIONS
+		+NOBLOCKMAP
+		+NOGRAVITY
+		+NOINTERACTION
+		+INVISIBLEINMIRRORS
+		+NOTIMEFREEZE
+    }
+	States
+	{
+	SetPlayer:
+		M000 A 1 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_INSTANT);
+		Goto Spawn;
+	Spawn:
+	See:
+		M000 A 0 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	
+	Idle:
+		M000 A 0 SetAnimation('Idle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+      	M000 A 1;
+		Wait;
+	IdlePivotRight:
+		M000 A 0 SetAnimation('TurnRight', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto Idle;
+	IdlePivotLeft:
+		M000 A 0 SetAnimation('TurnLeft', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto Idle;
+	Walk:
+		M000 A 0 SetAnimation('WalkFoward', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	WalkRight:
+		M000 A 0 SetAnimation('WalkRight', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	WalkLeft:
+		M000 A 0 SetAnimation('WalkLeft', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	WalkBack:
+		M000 A 0 SetAnimation('WalkBackward', framerate:35, interpolatetics:4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Run:
+		M000 A 0 SetAnimation('RunFoward', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	RunRight:
+		M000 A 0 SetAnimation('RunRight', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	RunLeft:
+		M000 A 0 SetAnimation('RunLeft', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	RunBack:
+		M000 A 0 SetAnimation('RunBackward', framerate:35, interpolatetics:2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Crouch:
+		M000 A 0 SetAnimation('CrouchIdle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBJ C 6;
+	CrouchIdle:
+		M000 A 0 SetAnimation('CrouchIdle', framerate:7, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	CrouchPivotLeft:
+		M000 A 0 SetAnimation('CrouchTurnLeft', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto CrouchIdle;
+	CrouchPivotRight:
+		M000 A 0 SetAnimation('CrouchTurnRight', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 4;
+		Goto CrouchIdle;
+	UnCrouch:
+		M000 A 0 SetAnimation('Idle', framerate:35, interpolatetics:6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		CYBI A 6;
+		Goto Idle;
+	CrouchWalk:
+		M000 A 0 SetAnimation('CrouchWalkFoward', framerate:17.5, interpolatetics:5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	CrouchWalkRight:
+		M000 A 0 SetAnimation('CrouchWalkRight', framerate:17.5, interpolatetics:5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	CrouchWalkLeft:
+		M000 A 0 SetAnimation('CrouchWalkLeft', framerate:17.5, interpolatetics:5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	CrouchWalkBack:
+		M000 A 0 SetAnimation('CrouchWalkBackward', framerate:17.5, interpolatetics:5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Jump:
+		M000 A 0 SetAnimation('Jump', interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Fall:
+		M000 A 0 SetAnimation('Fall', interpolatetics:6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Land:
+		M000 A 0 SetAnimation('Land', interpolatetics:1, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	XDeath:
+	Death:
+		#### # 6;
+		Goto DeathJump;
+	DeathSmack:
+		M000 A 0 SetAnimation('DeathSmack', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
+	DeathGrabLoop:
+		CYBF W 1;
+		Wait;
+	DeathGrab:
+		M000 A 0 SetAnimation('DeathGrab', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
+		M000 A 0;
+		CYBN O 2;
+		CYBN PQRSTUVWXYZ 2;
+		CYBO ABCDEFGHIJKL 2;
+	//DeathJump Animation
+		M000 A 0 SetAnimation('DeathJump', framerate:35, interpolatetics:0, flags:SAF_NOOVERRIDE);
+		CYBP J 1;
+		Wait;
+		
+	DeathJump:
+		M000 A 0 SetAnimation('DeathJump', framerate:35, interpolatetics:2, flags:SAF_NOOVERRIDE);
+		CYBP J 1;
+		Wait;
+	}
+}
+
+//-------------------------------------------------------------------------------------------
+//
+// Bill's Smoke
+//
+//-------------------------------------------------------------------------------------------
+
+Class BillSmoke : ACTOR
+{
+	Default
+	{
+		Radius 4;
+		Height 4;
+		RenderStyle "Add";
+		Alpha 0.35;
+		scale 0.02;
+		+FORCEPAIN;
+		+NOBLOCKMAP;
+		+NOGRAVITY;
+		+NOTELEPORT;
+		+CANNOTPUSH;
+		+FORCEXYBILLBOARD;
+		+ROLLSPRITE;
+		+NOTIMEFREEZE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 2;
+		TNT1 A 0 A_Jump(3,"SmokeAppear");
+		Goto XDeath;
+	SmokeAppear:
+		SMK1 A 0 
+		{
+			A_SetRoll(Random(0,359));
+			A_ChangeVelocity(0,0,(0.7),1);
+		}
+		SMK1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 3 A_FadeOut(0.02);
+		SMK2 ABCD 3 A_FadeOut(0.02);
+		TNT1 A -1;
+		Stop;
+	XDeath:
+		TNT1 A -1;
+		Stop;
+	}
+}

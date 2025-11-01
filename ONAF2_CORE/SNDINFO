@@ -1,0 +1,750 @@
+MENUCONFIRM		Sounds/Menus/CONFIRM.ogg
+BACKMENU		Sounds/Menus/BackMenu.ogg
+
+$limit ONaF1MusicBox 1
+ONaF1MusicBox Music/ONAF1MSBOX.ogg
+$rolloff ONaF1MusicBox 384 512
+$ambient 23 ONaF1MusicBox Point Continuous 0.2
+
+FlumptyScream Sounds/VoiceLines/Enemys/Flumpty/FlumptyScream.ogg
+$volume FlumptyScream 2.0
+
+RedmanScream Sounds/VoiceLines/Enemys/Redman/RedmanScream.ogg
+$volume RedmanScream 2.0
+
+BirthdayBoyBlamScream Sounds/VoiceLines/Enemys/BirthdayBoyBlam/BBBlamScream.ogg
+$volume BirthdayBoyBlamScream 2.0
+
+BeaverScream Sounds/VoiceLines/Enemys/Beavowl/Beaver/BeaverScream.ogg
+$volume BeaverScream 2.0
+
+GrunkfussTheClownScream Sounds/VoiceLines/Enemys/GrunkfussTheClown/GrunkScream.ogg
+$volume GrunkfussTheClownScream 2.0
+
+GoldenFlumptyScream Sounds/VoiceLines/Enemys/Flumpty/GoldenFlumpty/GFlumptyScream.ogg
+$volume GoldenFlumptyScream 2.0
+
+EyesaurScream Sounds/VoiceLines/Enemys/Eyesaur/EyesaurScream.ogg
+$volume EyesaurScream 2.0
+
+CHUCKLED Sounds/VoiceLines/Enemys/Flumpty/CHUCKLED
+$attenuation CHUCKLED 0
+
+DeadTune DEADTUNE
+
+FullTimeSound Music/TIME
+$volume FullTimeSound 2.0
+
+$random GoldenFlumptyAmbience	{GoldenFlumptyAmbience1}
+GoldenFlumptyAmbience1		Music/GFAMB1
+
+$limit GoldenFlumptyAmbience 1
+$volume GoldenFlumptyAmbience 7.0
+$attenuation GoldenFlumptyAmbience 0
+
+
+DSPSTOP		Sounds/Menus/DSPSTOP
+
+Alert Sounds/Menus/ALERT
+$attenuation Alert 0
+
+HardCall Sounds/VoiceLines/Enemys/Eyesaur/HARDCALL
+$rolloff HardCall 768 1024
+
+PowerDown Sounds/General/POWRDOWN
+$rolloff PowerDown 768 1024
+
+Screech Sounds/VoiceLines/Enemys/Redman/SCREECH
+$rolloff Screech 768 4096
+
+FlumptyHitWall Sounds/General/HITWALL
+$rolloff FlumptyHitWall 512 768
+
+LaserSound LASERSHO
+$rolloff LaserSound 768 1024
+
+FlumptyMyTurn Sounds/VoiceLines/Enemys/Flumpty/GFlumpty/MYTURN
+$rolloff FlumptyMyTurn 768 4096
+
+Room01 Music/ROOM1
+$rolloff Room01 1024 1506
+$ambient 2 Room01 Point Continuous 3.0
+
+Room02 Music/ROOM2
+$rolloff Room02 1024 1506
+$ambient 3 Room02 Point Continuous 3.0
+
+Room03 Music/ROOM3
+$rolloff Room03 1024 1506
+$ambient 4 Room03 Point Continuous 3.0
+
+EyesaurRoar Sounds/VoiceLines/Enemys/Eyesaur/DINOROAR
+$rolloff EyesaurRoar 1024 4096
+
+Lul2 Music/AMB2
+PowerOut2Amb AMB2PWO
+
+CameraOff Sounds/VoiceLines/Characters/TABLET
+$rolloff CameraOff 256 512
+
+Knock Sounds/General/KNOC
+$rolloff Knock 768 1025
+$volume Knock 18.7
+
+Cacto Sounds/General/CACTUS
+$rolloff Cacto 126 254
+
+DeskFan		Sounds/General/FAN
+$rolloff DeskFan 64 256
+
+FlumptyCall Sounds/VoiceLines/Enemys/Flumpty/THECALL
+$rolloff FlumptyCall 400 900
+
+LightsOn FLASHLIG
+$rolloff LightsOn 478 589
+
+LightBeacon BEACON
+$rolloff LightBeacon 478 589
+
+FoxyDoorKnocking KNOC
+$rolloff FoxyDoorKnocking 400 600
+$volume FoxyDoorKnocking 2.0
+
+Scare SCARE
+$rolloff Scare 256 1024
+
+FlumptyAppear SCARE
+$rolloff FlumptyAppear 256 1024
+
+$random Redman			{Redman1 Redman2 Redman3 Redman4}
+Redman1				Sounds/VoiceLines/Enemys/Redman/REDMAN1
+Redman2				Sounds/VoiceLines/Enemys/Redman/REDMAN2
+Redman3				Sounds/VoiceLines/Enemys/Redman/REDMAN3
+Redman4				Sounds/VoiceLines/Enemys/Redman/REDMAN4
+
+$limit Redman 1
+$volume Redman 5.0
+$rolloff Redman 384 1024
+
+HAM		Music/HAM.ogg
+SPAM		Music/SPAM.ogg
+NoSALAMI		Music/NoSALAMI.ogg
+SALAMI		Music/SALAMI.ogg
+6AM		Music/6AM.ogg
+
+//For Enemys
+
+$random	MonsterCarpetStep	{MonsterCarpetStep1 MonsterCarpetStep2 MonsterCarpetStep3 MonsterCarpetStep4}
+MonsterCarpetStep1				Sounds/Steps/Players/PLCarp1.ogg
+MonsterCarpetStep2				Sounds/Steps/Players/PLCarp2.ogg
+MonsterCarpetStep3				Sounds/Steps/Players/PLCarp3.ogg
+MonsterCarpetStep4				Sounds/Steps/Players/PLCarp4.ogg
+
+$limit MonsterCarpetStep 0
+$volume MonsterCarpetStep 1.0
+$rolloff MonsterCarpetStep 256 768
+
+$random	MonsterVentStep	{MonsterVentStep1 MonsterVentStep2 MonsterVentStep3 MonsterVentStep4}
+MonsterVentStep1				Sounds/Steps/Players/PLVent1.ogg
+MonsterVentStep2				Sounds/Steps/Players/PLVent2.ogg
+MonsterVentStep3				Sounds/Steps/Players/PLVent3.ogg
+MonsterVentStep4				Sounds/Steps/Players/PLVent4.ogg
+
+$limit MonsterVentStep 0
+$volume MonsterVentStep 1.0
+$rolloff MonsterVentStep 256 768
+
+$random	MonsterGrassStep	{MonsterGrassStep1 MonsterGrassStep2 MonsterGrassStep3 MonsterGrassStep4}
+MonsterGrassStep1				Sounds/Steps/Players/PLGrass1.ogg
+MonsterGrassStep2				Sounds/Steps/Players/PLGrass2.ogg
+MonsterGrassStep3				Sounds/Steps/Players/PLGrass3.ogg
+MonsterGrassStep4				Sounds/Steps/Players/PLGrass4.ogg
+
+$limit MonsterGrassStep 0
+$volume MonsterGrassStep 1.0
+$rolloff MonsterGrassStep 256 768
+
+$random	MonsterGlassStep	{MonsterGlassStep1 MonsterGlassStep2 MonsterGlassStep3 MonsterGlassStep4}
+MonsterGlassStep1				Sounds/Steps/Players/PLGlass1.ogg
+MonsterGlassStep2				Sounds/Steps/Players/PLGlass2.ogg
+MonsterGlassStep3				Sounds/Steps/Players/PLGlass3.ogg
+MonsterGlassStep4				Sounds/Steps/Players/PLGlass4.ogg
+
+$limit MonsterGlassStep 0
+$volume MonsterGlassStep 1.0
+$rolloff MonsterGlassStep 256 768
+
+$random	MonsterStoneStep	{MonsterStoneStep1 MonsterStoneStep2 MonsterStoneStep3 MonsterStoneStep4}
+MonsterStoneStep1				Sounds/Steps/Players/PLStone1.ogg
+MonsterStoneStep2				Sounds/Steps/Players/PLStone2.ogg
+MonsterStoneStep3				Sounds/Steps/Players/PLStone3.ogg
+MonsterStoneStep4				Sounds/Steps/Players/PLStone4.ogg
+
+$limit MonsterStoneStep 0
+$volume MonsterStoneStep 1.0
+$rolloff MonsterStoneStep 256 768
+
+$random	MonsterTileStep	{MonsterTileStep1 MonsterTileStep2 MonsterTileStep3 MonsterTileStep4}
+MonsterTileStep1				Sounds/Steps/Players/PLTile1.ogg
+MonsterTileStep2				Sounds/Steps/Players/PLTile2.ogg
+MonsterTileStep3				Sounds/Steps/Players/PLTile3.ogg
+MonsterTileStep4				Sounds/Steps/Players/PLTile4.ogg
+
+$limit MonsterTileStep 0
+$volume MonsterTileStep 1.0
+$rolloff MonsterTileStep 256 768
+
+$random	MonsterWoodStep	{MonsterWoodStep1 MonsterWoodStep2 MonsterWoodStep3 MonsterWoodStep4}
+MonsterWoodStep1				Sounds/Steps/Players/PLWood1.ogg
+MonsterWoodStep2				Sounds/Steps/Players/PLWood2.ogg
+MonsterWoodStep3				Sounds/Steps/Players/PLWood3.ogg
+MonsterWoodStep4				Sounds/Steps/Players/PLWood4.ogg
+
+$limit MonsterWoodStep 0
+$volume MonsterWoodStep 1.0
+$rolloff MonsterWoodStep 256 768
+
+
+//For Players
+JumpLanding			Sounds/Steps/Players/JumpLanding.ogg
+
+$limit JumpLanding 0
+$volume JumpLanding 1.0
+$rolloff JumpLanding 96 384
+
+$random	CarpetStep	{CarpetStep1 CarpetStep2 CarpetStep3 CarpetStep4}
+CarpetStep1				Sounds/Steps/Players/PLCarp1.ogg
+CarpetStep2				Sounds/Steps/Players/PLCarp2.ogg
+CarpetStep3				Sounds/Steps/Players/PLCarp3.ogg
+CarpetStep4				Sounds/Steps/Players/PLCarp4.ogg
+
+$limit CarpetStep 0
+$volume CarpetStep 1.0
+$rolloff CarpetStep 64 128
+
+$random	VentStep	{VentStep1 VentStep2 VentStep3 VentStep4}
+VentStep1				Sounds/Steps/Players/PLVent1.ogg
+VentStep2				Sounds/Steps/Players/PLVent2.ogg
+VentStep3				Sounds/Steps/Players/PLVent3.ogg
+VentStep4				Sounds/Steps/Players/PLVent4.ogg
+
+$limit VentStep 0
+$volume VentStep 1.0
+$rolloff VentStep 64 128
+
+$random	GrassStep	{GrassStep1 GrassStep2 GrassStep3 GrassStep4}
+GrassStep1				Sounds/Steps/Players/PLGrass1.ogg
+GrassStep2				Sounds/Steps/Players/PLGrass2.ogg
+GrassStep3				Sounds/Steps/Players/PLGrass3.ogg
+GrassStep4				Sounds/Steps/Players/PLGrass4.ogg
+
+$limit GrassStep 0
+$volume GrassStep 1.0
+$rolloff GrassStep 64 128
+
+$random	GlassStep	{GlassStep1 GlassStep2 GlassStep3 GlassStep4}
+GlassStep1				Sounds/Steps/Players/PLGlass1.ogg
+GlassStep2				Sounds/Steps/Players/PLGlass2.ogg
+GlassStep3				Sounds/Steps/Players/PLGlass3.ogg
+GlassStep4				Sounds/Steps/Players/PLGlass4.ogg
+
+$limit GlassStep 0
+$volume GlassStep 1.0
+$rolloff GlassStep 64 128
+
+$random	StoneStep	{StoneStep1 StoneStep2 StoneStep3 StoneStep4}
+StoneStep1				Sounds/Steps/Players/PLStone1.ogg
+StoneStep2				Sounds/Steps/Players/PLStone2.ogg
+StoneStep3				Sounds/Steps/Players/PLStone3.ogg
+StoneStep4				Sounds/Steps/Players/PLStone4.ogg
+
+$limit StoneStep 0
+$volume StoneStep 1.0
+$rolloff StoneStep 64 128
+
+$random	TileStep	{TileStep1 TileStep2 TileStep3 TileStep4}
+TileStep1				Sounds/Steps/Players/PLTile1.ogg
+TileStep2				Sounds/Steps/Players/PLTile2.ogg
+TileStep3				Sounds/Steps/Players/PLTile3.ogg
+TileStep4				Sounds/Steps/Players/PLTile4.ogg
+
+$limit TileStep 0
+$volume TileStep 1.0
+$rolloff TileStep 64 128
+
+$random	WoodStep	{WoodStep1 WoodStep2 WoodStep3 WoodStep4}
+WoodStep1				Sounds/Steps/Players/PLWood1.ogg
+WoodStep2				Sounds/Steps/Players/PLWood2.ogg
+WoodStep3				Sounds/Steps/Players/PLWood3.ogg
+WoodStep4				Sounds/Steps/Players/PLWood4.ogg
+
+$limit WoodStep 0
+$volume WoodStep 1.0
+$rolloff WoodStep 64 128
+
+$playersound	"playersounds"	male	*death		dsempty
+$playersound	"playersounds"	male	*xdeath		dsempty
+$playersound	"playersounds"	male	*gibbed		dsempty
+$playersound	"playersounds"	male	*pain100	dsempty
+$playersound	"playersounds"	male	*pain75		dsempty
+$playersound	"playersounds"	male	*pain50		dsempty
+$playersound	"playersounds"	male	*pain25		dsempty
+$playersound	"playersounds"	male	*weaponlaugh	dsempty
+$playersound	"playersounds"	male	*evillaugh	dsempty
+$playersound	"playersounds"	male	*grunt		dsempty
+$playersound	"playersounds"	male	*usefail	dsempty
+$playersound	"playersounds"	male	*land		dsempty
+$playersound	"playersounds"	male	*jump		dsempty
+
+$playersound	"playersounds"	female	*death		dsempty
+$playersound	"playersounds"	female	*xdeath		dsempty
+$playersound	"playersounds"	female	*gibbed		dsempty
+$playersound	"playersounds"	female	*pain100	dsempty
+$playersound	"playersounds"	female	*pain75		dsempty
+$playersound	"playersounds"	female	*pain50		dsempty
+$playersound	"playersounds"	female	*pain25		dsempty
+$playersound	"playersounds"	female	*weaponlaugh	dsempty
+$playersound	"playersounds"	female	*evillaugh	dsempty
+$playersound	"playersounds"	female	*grunt		dsempty
+$playersound	"playersounds"	female	*usefail	dsempty
+$playersound	"playersounds"	female	*land		dsempty
+$playersound	"playersounds"	female	*jump		dsempty
+
+$playersound	"playersounds"	other	*death		dsempty
+$playersound	"playersounds"	other	*xdeath		dsempty
+$playersound	"playersounds"	other	*gibbed		dsempty
+$playersound	"playersounds"	other	*pain100	dsempty
+$playersound	"playersounds"	other	*pain75		dsempty
+$playersound	"playersounds"	other	*pain50		dsempty
+$playersound	"playersounds"	other	*pain25		dsempty
+$playersound	"playersounds"	other	*weaponlaugh	dsempty
+$playersound	"playersounds"	other	*evillaugh	dsempty
+$playersound	"playersounds"	other	*grunt		dsempty
+$playersound	"playersounds"	other	*usefail	dsempty
+$playersound	"playersounds"	other	*land		dsempty
+$playersound	"playersounds"	other	*jump		dsempty
+
+$random ZoeySelect    {ZoeySelect1 ZoeySelect2 ZoeySelect3}
+ZoeySelect1		ZOESLCT1
+ZoeySelect2		ZOESLCT2
+ZoeySelect3		ZOESLCT3
+
+$limit ZoeySelect 0
+$rolloff ZoeySelect 512 768
+$volume ZoeySelect 1.0
+
+$random LouisSelect    {LouisSelect1 LouisSelect2 LouisSelect3}
+LouisSelect1		LOUSLCT1
+LouisSelect2		LOUSLCT2
+LouisSelect3		LOUSLCT3
+
+$limit LouisSelect 0
+$rolloff LouisSelect 512 768
+$volume LouisSelect 1.0
+
+$random BillSelect    {BillSelect1 BillSelect2 BillSelect3}
+BillSelect1		BILSLCT1
+BillSelect2		BILSLCT2
+BillSelect3		BILSLCT3
+
+$limit BillSelect 0
+$rolloff BillSelect 512 768
+$volume BillSelect 1.0
+
+$random FrancisSelect    {FrancisSelect1 FrancisSelect2 FrancisSelect3}
+FrancisSelect1		FRASLCT1
+FrancisSelect2		FRASLCT2
+FrancisSelect3		FRASLCT3
+
+$limit FrancisSelect 0
+$rolloff FrancisSelect 512 768
+$volume FrancisSelect 1.0
+
+$random NickSelect    {NickSelect1 NickSelect2 NickSelect3}
+NickSelect1		NICSLCT1
+NickSelect2		NICSLCT2
+NickSelect3		NICSLCT3
+
+$limit NickSelect 0
+$rolloff NickSelect 512 768
+$volume NickSelect 1.0
+
+$random EllisSelect    {EllisSelect1 EllisSelect2 EllisSelect3}
+EllisSelect1		ELLSLCT1
+EllisSelect2		ELLSLCT2
+EllisSelect3		ELLSLCT3
+
+$limit EllisSelect 0
+$rolloff EllisSelect 512 768
+$volume EllisSelect 1.0
+
+$random CoachSelect    {CoachSelect1 CoachSelect2 CoachSelect3}
+CoachSelect1		COASLCT1
+CoachSelect2		COASLCT2
+CoachSelect3		COASLCT3
+
+$limit CoachSelect 0
+$rolloff CoachSelect 512 768
+$volume CoachSelect 1.0
+
+$random RochelleSelect    {RochelleSelect1 RochelleSelect2 RochelleSelect3}
+RochelleSelect1		ROCSLCT1
+RochelleSelect2		ROCSLCT2
+RochelleSelect3		ROCSLCT3
+
+$limit RochelleSelect 0
+$rolloff RochelleSelect 512 768
+$volume RochelleSelect 1.0
+
+$random SmithSelect    {SmithSelect1 SmithSelect2 SmithSelect3}
+SmithSelect1		SMISLCT1
+SmithSelect2		SMISLCT2
+SmithSelect3		SMISLCT3
+
+$limit SmithSelect 0
+$rolloff SmithSelect 512 768
+$volume SmithSelect 1.0
+
+$random Zoey6AM    {Zoey6AM1 Zoey6AM2 Zoey6AM3}
+Zoey6AM1		ZOE6AM1
+Zoey6AM2		ZOE6AM2
+Zoey6AM3		ZOE6AM3
+
+$limit Zoey6AM 0
+$rolloff Zoey6AM 512 768
+$volume Zoey6AM 1.0
+
+$random Louis6AM    {Louis6AM1 Louis6AM2 Louis6AM3}
+Louis6AM1		LOU6AM1
+Louis6AM2		LOU6AM2
+Louis6AM3		LOU6AM3
+
+$limit Louis6AM 0
+$rolloff Louis6AM 512 768
+$volume Louis6AM 1.0
+
+$random Bill6AM    {Bill6AM1 Bill6AM2 Bill6AM3}
+Bill6AM1		BIL6AM1
+Bill6AM2		BIL6AM2
+Bill6AM3		BIL6AM3
+
+$limit Bill6AM 0
+$rolloff Bill6AM 512 768
+$volume Bill6AM 1.0
+
+$random Francis6AM    {Francis6AM1 Francis6AM2 Francis6AM3}
+Francis6AM1		FRA6AM1
+Francis6AM2		FRA6AM2
+Francis6AM3		FRA6AM3
+
+$limit Francis6AM 0
+$rolloff Francis6AM 512 768
+$volume Francis6AM 1.0
+
+$random Nick6AM    {Nick6AM1 Nick6AM2 Nick6AM3}
+Nick6AM1		NIC6AM1
+Nick6AM2		NIC6AM2
+Nick6AM3		NIC6AM3
+
+$limit Nick6AM 0
+$rolloff Nick6AM 512 768
+$volume Nick6AM 1.0
+
+$random Ellis6AM    {Ellis6AM1 Ellis6AM2 Ellis6AM3}
+Ellis6AM1		ELL6AM1
+Ellis6AM2		ELL6AM2
+Ellis6AM3		ELL6AM3
+
+$limit Ellis6AM 0
+$rolloff Ellis6AM 512 768
+$volume Ellis6AM 1.0
+
+$random Coach6AM    {Coach6AM1 Coach6AM2 Coach6AM3}
+Coach6AM1		COA6AM1
+Coach6AM2		COA6AM2
+Coach6AM3		COA6AM3
+
+$limit Coach6AM 0
+$rolloff Coach6AM 512 768
+$volume Coach6AM 1.0
+
+$random Rochelle6AM    {Rochelle6AM1 Rochelle6AM2 Rochelle6AM3}
+Rochelle6AM1		ROC6AM1
+Rochelle6AM2		ROC6AM2
+Rochelle6AM3		ROC6AM3
+
+$limit Rochelle6AM 0
+$rolloff Rochelle6AM 512 768
+$volume Rochelle6AM 1.0
+
+$random Smith6AM    {Smith6AM1 Smith6AM2 Smith6AM3}
+Smith6AM1		SMI6AM1
+Smith6AM2		SMI6AM2
+Smith6AM3		SMI6AM3
+
+$limit Smith6AM 0
+$rolloff Smith6AM 512 768
+$volume Smith6AM 1.0
+
+$random Smithjump    {Smithjump1 Smithjump2 Smithjump3 Smithjump4 Smithjump5 Smithjump6 Smithjump7}
+Smithjump1  SMIjump1
+Smithjump2  SMIjump2
+Smithjump3  SMIjump3
+Smithjump4  SMIjump4
+Smithjump5  SMIjump5
+Smithjump6  SMIjump6
+Smithjump7  SMIjump7
+
+$limit Smithjump 0
+$rolloff Smithjump 128 1000
+$volume Smithjump 0.3
+
+$random SmithDie    { SmithDie1 SmithDie2 SmithDie3 SmithDie4 SmithDie5 SmithDie6 SmithDie7}
+SmithDie1  SMIDie1
+SmithDie2  SMIDie2
+SmithDie3  SMIDie3
+SmithDie4  SMIDie4
+SmithDie5  SMIDie5
+SmithDie6  SMIDie6
+SmithDie7  SMIDie7
+
+$limit SmithDie 0
+$rolloff SmithDie 512 1250
+$volume SmithDie 1.8
+
+$random zoeyjump    {zoeyjump1 zoeyjump2 zoeyjump3 zoeyjump4 zoeyjump5 zoeyjump6 zoeyjump7}
+zoeyjump1  zoejump1
+zoeyjump2  zoejump2
+zoeyjump3  zoejump3
+zoeyjump4  zoejump4
+zoeyjump5  zoejump5
+zoeyjump6  zoejump6
+zoeyjump7  zoejump7
+
+$limit zoeyjump 0
+$rolloff zoeyjump 128 1000
+$volume zoeyjump 0.3
+
+$random ZoeyDie    { ZoeyDie1 ZoeyDie2 ZoeyDie3 ZoeyDie4 ZoeyDie5 ZoeyDie6 ZoeyDie7}
+ZoeyDie1  ZOEDie1
+ZoeyDie2  ZOEDie2
+ZoeyDie3  ZOEDie3
+ZoeyDie4  ZOEDie4
+ZoeyDie5  ZOEDie5
+ZoeyDie6  ZOEDie6
+ZoeyDie7  ZOEDie7
+
+$limit ZoeyDie 0
+$rolloff ZoeyDie 512 1250
+$volume ZoeyDie 1.8
+
+$random billjump	{billjump1 billjump2 billjump3 billjump4 billjump5 billjump6 billjump7}
+billjump1  biljump1
+billjump2  biljump2
+billjump3  biljump3
+billjump4  biljump4
+billjump5  biljump5
+billjump6  biljump6
+billjump7  biljump7
+
+$limit billjump 0
+$rolloff billjump 128 1000
+$volume billjump 0.3
+
+$random billDie	{ billDie1 billDie2 billDie3 billDie4 billDie5 billDie6 billDie7}
+billDie1  bilDie1
+billDie2  bilDie2
+billDie3  bilDie3
+billDie4  bilDie4
+billDie5  bilDie5
+billDie6  bilDie6
+billDie7  bilDie7
+
+$limit billDie 0
+$rolloff billDie 512 1250
+$volume billDie 1.8
+
+$random francisjump	{francisjump1 francisjump2 francisjump3 francisjump4 francisjump5 francisjump6 francisjump7}
+francisjump1  frajump1
+francisjump2  frajump2
+francisjump3  frajump3
+francisjump4  frajump4
+francisjump5  frajump5
+francisjump6  frajump6
+francisjump7  frajump7
+
+$limit francisjump 0
+$rolloff francisjump 128 1000
+$volume francisjump 0.3
+
+$random francisDie	{ francisDie1 francisDie2 francisDie3 francisDie4 francisDie5 francisDie6 francisDie7}
+francisDie1  fraDie1
+francisDie2  fraDie2
+francisDie3  fraDie3
+francisDie4  fraDie4
+francisDie5  fraDie5
+francisDie6  fraDie6
+francisDie7  fraDie7
+
+$limit francisDie 0
+$rolloff francisDie 512 1250
+$volume francisDie 1.8
+
+$random louisjump    {louisjump1 louisjump2 louisjump3 louisjump4 louisjump5 louisjump6 louisjump7}
+louisjump1  loujump1
+louisjump2  loujump2
+louisjump3  loujump3
+louisjump4  loujump4
+louisjump5  loujump5
+louisjump6  loujump6
+louisjump7  loujump7
+
+$limit louisjump 0
+$rolloff louisjump 128 1000
+$volume louisjump 0.3
+
+$random louisDie    { louisDie1 louisDie2 louisDie3 louisDie4 louisDie5 louisDie6 louisDie7}
+louisDie1  louDie1
+louisDie2  louDie2
+louisDie3  louDie3
+louisDie4  louDie4
+louisDie5  louDie5
+louisDie6  louDie6
+louisDie7  louDie7
+
+$limit louisDie 0
+$rolloff louisDie 512 1250
+$volume louisDie 1.8
+
+$random nickjump    {nickjump1 nickjump2 nickjump3 nickjump4 nickjump5 nickjump6 nickjump7}
+nickjump1  nicjump1
+nickjump2  nicjump2
+nickjump3  nicjump3
+nickjump4  nicjump4
+nickjump5  nicjump5
+nickjump6  nicjump6
+nickjump7  nicjump7
+
+$limit nickjump 0
+$rolloff nickjump 128 1000
+$volume nickjump 0.3
+
+$random nickDie    { nickDie1 nickDie2 nickDie3 nickDie4 nickDie5 nickDie6 nickDie7}
+nickDie1  nicDie1
+nickDie2  nicDie2
+nickDie3  nicDie3
+nickDie4  nicDie4
+nickDie5  nicDie5
+nickDie6  nicDie6
+nickDie7  nicDie7
+
+$limit nickDie 0
+$rolloff nickDie 512 1250
+$volume nickDie 1.8
+
+$random ellisjump    {ellisjump1 ellisjump2 ellisjump3 ellisjump4 ellisjump5 ellisjump6 ellisjump7}
+ellisjump1  elljump1
+ellisjump2  elljump2
+ellisjump3  elljump3
+ellisjump4  elljump4
+ellisjump5  elljump5
+ellisjump6  elljump6
+ellisjump7  elljump7
+
+$limit ellisjump 0
+$rolloff ellisjump 128 1000
+$volume ellisjump 0.3
+
+$random ellisDie    { ellisDie1 ellisDie2 ellisDie3 ellisDie4 ellisDie5 ellisDie6 ellisDie7}
+ellisDie1  ellDie1
+ellisDie2  ellDie2
+ellisDie3  ellDie3
+ellisDie4  ellDie4
+ellisDie5  ellDie5
+ellisDie6  ellDie6
+ellisDie7  ellDie7
+
+$limit ellisDie 0
+$rolloff ellisDie 512 1250
+$volume ellisDie 1.8
+
+$random coachjump    {coachjump1 coachjump2 coachjump3 coachjump4 coachjump5 coachjump6 coachjump7}
+coachjump1  coajump1
+coachjump2  coajump2
+coachjump3  coajump3
+coachjump4  coajump4
+coachjump5  coajump5
+coachjump6  coajump6
+coachjump7  coajump7
+
+$limit coachjump 0
+$rolloff coachjump 128 1000
+$volume coachjump 0.3
+
+$random coachDie    { coachDie1 coachDie2 coachDie3 coachDie4 coachDie5 coachDie6 coachDie7}
+coachDie1  coaDie1
+coachDie2  coaDie2
+coachDie3  coaDie3
+coachDie4  coaDie4
+coachDie5  coaDie5
+coachDie6  coaDie6
+coachDie7  coaDie7
+
+$limit coachDie 0
+$rolloff coachDie 512 1250
+$volume coachDie 1.8
+
+$random rochellejump    {rochellejump1 rochellejump2 rochellejump3 rochellejump4 rochellejump5 rochellejump6 rochellejump7}
+rochellejump1  rocjump1
+rochellejump2  rocjump2
+rochellejump3  rocjump3
+rochellejump4  rocjump4
+rochellejump5  rocjump5
+rochellejump6  rocjump6
+rochellejump7  rocjump7
+
+$limit rochellejump 0
+$rolloff rochellejump 128 1000
+$volume rochellejump 0.3
+
+$random rochelleDie    { rochelleDie1 rochelleDie2 rochelleDie3 rochelleDie4 rochelleDie5 rochelleDie6 rochelleDie7}
+rochelleDie1  rocDie1
+rochelleDie2  rocDie2
+rochelleDie3  rocDie3
+rochelleDie4  rocDie4
+rochelleDie5  rocDie5
+rochelleDie6  rocDie6
+rochelleDie7  rocDie7
+
+$limit rochelleDie 0
+$rolloff rochelleDie 512 1250
+$volume rochelleDie 1.8
+
+$random ClownStep {clowstp01 clowstp02 clowstp03 clowstp04}
+clowstp01 CLOWSTP1
+clowstp02 CLOWSTP2
+clowstp03 CLOWSTP3
+clowstp04 CLOWSTP4
+
+$rolloff ClownStep 512 1024
+$volume ClownStep 1.0
+
+$random BeaverStep {beastep01 beastep02 beastep03 beastep04}
+beastep01 BEASTEP1
+beastep02 BEASTEP2
+beastep03 BEASTEP3
+beastep04 BEASTEP4
+
+$rolloff BeaverStep 256 768
+$volume BeaverStep 1.0
+
+$random EyesaurStep {eyestep01 eyestep02 eyestep03 eyestep04 eyestep05 eyestep06}
+eyestep01 EYESTEP1
+eyestep02 EYESTEP2
+eyestep03 EYESTEP3
+eyestep04 EYESTEP4
+eyestep05 EYESTEP5
+eyestep06 EYESTEP6
+
+$rolloff ClownStep 768 2048
+$volume ClownStep 4.5
