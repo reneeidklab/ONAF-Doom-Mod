@@ -74,12 +74,6 @@ OptionMenu "ModOpt"
 	
 	StaticText "If someone is AFK, turn the option below on.", "Purple"
 	Option "AFK Mode: ", "PLAYER_AFK", "YesNo"
-	
-	StaticText " ", "Untranslated"
-	
-	StaticText "Monsters", "Red"
-	
-	Option "Eyesaur Enabled: ", "ONAF1_EYESAUR_ENEMY", "YesNo"
 }
 
 ListMenu "PlayerclassMenu"
