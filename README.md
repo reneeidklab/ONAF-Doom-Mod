@@ -12,8 +12,8 @@ __Join__ my **DISCORD SERVER** for more FNaF Doom mods content: https://discord.
 
 *Current engine version*: 4.14.2
 
-*Current mod build number*: 19581e27de
+*Current mod build number*: 6b51d431df
 
-*Current mod build keyword*: window
+*Current mod build keyword*: garden
 
-*Current mod version*: 0.0.0.9
+*Current mod version*: 0.0.0.12
