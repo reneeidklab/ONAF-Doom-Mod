@@ -12,8 +12,8 @@ __Join__ my **DISCORD SERVER** for more FNaF Doom mods content: https://discord.
 
 *Current engine version*: 4.14.2
 
-*Current mod build number*: 6b51d431df
+*Current mod build key*: 3fdba35f04
 
-*Current mod build keyword*: garden
+*Current mod build phrase*: Everlasting-Bat-Cheer
 
-*Current mod version*: 0.0.0.12
+*Current mod version*: 0.0.0.13
