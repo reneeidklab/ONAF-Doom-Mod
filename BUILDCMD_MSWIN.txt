@@ -1,1 +1,0 @@
-tar -a -c -f ONAF2_CORE.zip ONAF2_CORE

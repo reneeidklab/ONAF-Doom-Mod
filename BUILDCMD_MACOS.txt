@@ -1,1 +1,0 @@
-zip -r "ONAF2_CORE.zip" "ONAF2_CORE"
