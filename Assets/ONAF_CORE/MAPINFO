@@ -1,0 +1,72 @@
+DoomEdNums
+{
+	19300 = Cactus, NoSkillFlags
+	19200 = SwitchOutlet, NoSkillFlags
+}
+
+skill baby
+{
+	ammofactor = 1.0
+	dropammofactor = 1.0
+	damagefactor = 1.0
+	aggressiveness = 0.0
+	SpawnFilter = Easy
+	Name = "Are you ready for Flumpty?"
+	textcolor = "Red"
+	autousehealth
+	Monsterhealth = 1.0
+	armorfactor = 1.0
+}
+
+episode GAME1N1 { name = "Flumpty's House of Horrors" key = "f" }
+
+gameinfo 
+{
+	AddEventHandlers = "HeadBobbing"
+	CursorPic = "MENUCURS"
+	DrawReadThis = false
+	QuitMessages = "Quit the game! \nFlumpty always come back.", 
+					"It's a birthday party here. \nDon't leave now.",
+					"I hope you crack on floor."
+	QuitSound = "Alert"
+	ChatSound = "DSPSTOP"
+}
+
+map GAME1N1 "One Night At Flumpty's 1 Default Mode"
+{
+	music = ""
+	next = "GAME1N2"
+	sky1 = "CLOUDSKY",0.05
+	UsePlayerStartZ
+	noinfighting
+	resethealth
+	resetinventory
+	NoIntermission
+	PrecacheClasses = "ThePlayer","Flumpty","BBB","Beaver","Redman","Grunkfuss","GoldenFlumpty1"
+}
+
+map GAME1N2 "One Night At Flumpty's 1 Hard Boiled Mode"
+{
+	music = ""
+	next = "GAME1N3"
+	sky1 = "CLOUDSKY",0.05
+	UsePlayerStartZ
+	noinfighting
+	resethealth
+	resetinventory
+	NoIntermission
+	PrecacheClasses = "ThePlayer","Flumpty","BBB","Beaver","Redman","Grunkfuss","GoldenFlumpty1"
+}
+
+map GAME1N3 "One Night At Flumpty's 1 Madness Mode"
+{
+	music = ""
+	next = "GAME1N3"
+	sky1 = "CLOUDSKY",0.05
+	UsePlayerStartZ
+	noinfighting
+	resethealth
+	resetinventory
+	NoIntermission
+	PrecacheClasses = "ThePlayer","Flumpty","BBB","Beaver","Redman","Grunkfuss","GoldenFlumpty1"
+}
