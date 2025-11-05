@@ -79,7 +79,7 @@ class ThePlayer : PlayerPawn
 			If (Player.ViewHeight < 46) { A_PlaySound("CarpetStep",0,0.5); }
 			Else { A_PlaySound("CarpetStep",0,1.0); }
 		}
-		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
+		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2") || CheckFloorTexture("OWLVENT1") || CheckFloorTexture("OWLVENT2"))
 		{
 			If (Player.ViewHeight < 46) { A_PlaySound("VentStep",0,0.5); }
 			Else { A_PlaySound("VentStep",0,1.0); }
