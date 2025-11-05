@@ -1,0 +1,72 @@
+material texture SLIME01 {
+	shader "glsl/water.fp"
+	Filter "Trilinear"
+	normal "textures/FWATER1_N.png" 
+	specular "textures/FWATER1_S.png" 
+	speed 0.35
+}
+
+material texture SLIME05 {
+	shader "glsl/water.fp"
+	Filter "Trilinear"
+	normal "textures/FWATER1_N2.png" 
+	specular "textures/FWATER1_S.png" 
+	speed 0.35
+}
+
+material texture NUKAGE1 {
+	shader "glsl/water.fp"
+	Filter "Trilinear"
+	normal "textures/LAVA1_N.png" 
+	specular "textures/FWATER1_S.png" 
+	speed 0.5
+}
+
+material texture BLOOD1 {
+	shader "glsl/water.fp"
+	normal "textures/FWATER1_N2.png" Filter "Trilinear"
+	specular "textures/FWATER1_S.png" Filter "Trilinear"
+	speed 0.3
+}
+
+material texture FWATER1 {
+	shader "glsl/water.fp"
+	Filter "Trilinear"
+	normal "textures/FWATER1_N2.png" 
+	specular "textures/FWATER1_S.png" 
+}
+
+material texture BFALL1 {
+	shader "glsl/waterfall.fp"
+	Filter "Trilinear"
+	normal "textures/BFALL1_N.png" 
+	specular "textures/BFALL1_S.png"
+	texture tex_scroll "textures/BFALL1_SCROLL.png"
+	specularlevel 256.0
+	glossiness 0.5
+}
+material texture SFALL1 {
+	shader "glsl/waterfall.fp"
+	Filter "Trilinear"
+	normal "textures/BFALL1_N.png" 
+	specular "textures/BFALL1_S.png"
+	texture tex_scroll "textures/BFALL1_SCROLL.png"
+}
+
+material texture LAVA1 {
+	shader "glsl/lava.fp"
+	Filter "Trilinear"
+	normal "textures/LAVA1_N.png" 
+	specular "textures/LAVA1_S.png" 
+	texture tex_emit "textures/LAVA1_E.png" 
+	speed 0.5
+}
+
+Glow
+{
+	Flats
+	{
+		LAVA1
+		NUKAGE1
+	}
+}
