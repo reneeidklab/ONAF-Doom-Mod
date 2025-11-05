@@ -824,8 +824,11 @@ class BBB : Actor
 
 class Beaver : Actor
 {
+	Private int Delay;
+	Private Int InDuct;
+	private bool IsCrouch;
+	private bool Returning;
 	private int counter;
-	private bool ishard;
 	private int playercount;
 	private double angleLerpSpeed;
 	Bool CheckFloorTexture(String texName)
@@ -833,6 +836,20 @@ class Beaver : Actor
         String floorTex = TexMan.GetName(self.floorpic);
         return (floorTex == texName);
     }
+	override void PostBeginPlay()
+	{
+		angleLerpSpeed = 0.35;
+		playercount = 1;
+		Returning = FALSE;
+		IsCrouch = FALSE;
+		Delay = 30;
+		InDuct = 2;
+		angleLerpSpeed = 0.35;
+		for (int i = 0; i < players.size(); i++)
+			if (playeringame[i])
+				playercount++;
+		Super.PostBeginPlay();
+	}
 	void FootStep()
 	{
 		A_PlaySound("BeaverStep",0,3.5);
@@ -846,6 +863,12 @@ class Beaver : Actor
 	}
 	void My_ImprovedChase(statelabel MeleeState)
 	{
+		If (CheckFloorTexture("OWOOD1"))
+		{
+			A_Wander(CHF_NORANDOMTURN);
+			If (CheckIfTargetInLOS(360.0,0,46)) { SetStateLabel("Jumpscare"); }
+			Return;
+		}
 		Actor target = self.target;
 		if (!target)
 			return;
@@ -877,230 +900,295 @@ class Beaver : Actor
 		self.vel.y = Sin(newAngle) * moveSpeed;
 		A_SetSpeed(moveSpeed);
 	}
-	override void PostBeginPlay()
+	void BeaverIdle()
 	{
-		angleLerpSpeed = 0.35;
-		counter = 0;
-		ishard = false;
-		playercount = 1;
-		
-		if (level.mapname == "e1m2")
+		If (IsCrouch == FALSE)
 		{
-			ishard = true;
+			if (random(0, 571) > 500) { SetStateLabel("Wander"); }
+			If (Target) { If (CheckIfTargetInLOS(75.0,100,968)) { SetStateLabel("RunChase"); } }
+			Else If (!Target) { If (CheckSight(Target,SF_SEEPASTBLOCKEVERYTHING)) { SetStateLabel("Idle"); } }
 		}
-		else
+		Else If (IsCrouch == TRUE)
 		{
-			ishard = false;
-		}
-		
-		for (int i = 0; i < players.size(); i++)
-			if (playeringame[i])
-				playercount++;
-		Super.PostBeginPlay();
-	}
-	
-	void A_RunChase()
-	{
-		A_SetSpeed(12.2, AAPTR_DEFAULT);
-		A_GiveInventory("IsChasingFast", 999);
-		My_ImprovedChase("Melee");
-		
-		If (CheckProximity("CheckDoorProxHit", 52.4, 1, 0, AAPTR_DEFAULT))
-		{
-			A_GiveInventory("BeaverHasHitDoor", 1);
-			SetStateLabel("DoorPound");
+			If (CheckInventory("IsChasingFast",1,AAPTR_DEFAULT) || random(0, 571) > 500) { SetStateLabel("CrouchWalk"); }
+			If (Target) { If (CheckIfTargetInLOS(75.0,100,968)) { SetStateLabel("CrouchWalk"); } }
+			Else If (!Target) { If (CheckSight(Target,SF_SEEPASTBLOCKEVERYTHING)) { SetStateLabel("CrouchIdle"); } }
 		}
 	}
-	
-	void A_Count()
+	void BeaverWander()
 	{
-		counter += random(0, 6);
-		
-		if (ishard)
+		Speed = 2.8;
+		A_GiveInventory("IsChasingSlow2",999);
+		if (target)
 		{
-			if (counter > 1500-(playercount*64))
+			If (!CheckSight(Target,SF_SEEPASTBLOCKEVERYTHING)) { My_ImprovedChase(null); }
+			Else If (CheckSight(Target,SF_SEEPASTBLOCKEVERYTHING)) { A_Wander(CHF_NORANDOMTURN); }
+		}
+		If (CheckIfTargetInLOS(75.0,0,1024,0)) { SetStateLabel("RunChase"); }
+		if (random(0, 1025) > 1024) { SetStateLabel("Wander"); }
+		If (CheckProximity("VentNear",24.0,1,AAPTR_DEFAULT)) { SetStateLabel("ToCrouch"); }
+	}
+	void BeaverRun()
+	{
+		A_TakeInventory("IsChasingSlow2",999);
+		If (Target)
+		{
+			If (CheckSight(Target,SF_SEEPASTBLOCKEVERYTHING)) { Speed = 11.7; }
+			Else { Speed = 15.10; }
+		}
+		If (Returning == FALSE) 
+		{ 
+			A_GiveInventory("IsChasingFast",999);
+			My_ImprovedChase("Jumpscare"); 
+			If (CheckProximity("CheckDoorProxHit", 52.4, 1, 0, AAPTR_DEFAULT)) { SetStateLabel("DoorPound"); }
+			If (CheckProximity("VentNear",24.0,1,AAPTR_DEFAULT)) { SetStateLabel("ToCrouch"); }
+		}
+		If (Returning == TRUE) 
+		{ 
+			If (CheckProximity("Toilet",176.0,1,0, AAPTR_DEFAULT)) { SetStateLabel("ToRun"); }
+			A_Chase(null,null); 
+		}
+	}
+	void BeaverCrouchWalk()
+	{
+		Speed = 2.6;
+		My_ImprovedChase("Jumpscare"); 
+	}
+	override void Tick()
+    {
+        Super.Tick();
+	//If no Duct
+		if (!CheckFloorTexture("METL2") && IsCrouch == TRUE)
+		{
+			//Console.printf("%s == InDuct %d", self.GetClassName(), InDuct);
+			if (Delay-- <= 0)
 			{
-				counter = 0;
-				SetStateLabel("LookAround");
+				Delay = 30;
+				InDuct -= 1;
+				if (InDuct <= 0) 
+				{ 
+					InDuct = 2;
+					SetStateLabel("ToStand");
+					A_Stop();
+					A_SetSize(-1,57);
+					IsCrouch = FALSE;
+				}
 			}
 		}
-		else
-		{
-			if (counter > 7000-(playercount*72))
-			{
-				counter = 0;
-				SetStateLabel("LookAround");
-			}
-		}
-	}
-	
-	void A_CheckToilet()
-	{
-		My_ImprovedChase(null);
-		
-		if (CheckProximity("Toilet", 176.0, 1, 0, AAPTR_DEFAULT))
-		{
-			SetStateLabel("LoseTarget");
-		}
-	}
-	
+    }
 	Default
 	{
-		Health 2;
 		Radius 18;
 		Height 57;
-		Mass 1000;
-		Speed 13.0;
-		Scale 1.8;
-		PainChance 0;
+		Scale 17.5;
 		MeleeRange 46;
-		CameraHeight 80;
 		MaxStepHeight 500;
 		MaxDropOffHeight 500;
-		Species "Monster";
-		RenderStyle "Normal";
-		Alpha 1.0;
 		Monster;
-		+NOPAIN;
-		+LOOKALLAROUND;
-		+SLIDESONWALLS;
-		+INVULNERABLE;
-		+NODAMAGE;
-		+DROPOFF;
-		+INTERPOLATEANGLES;
-		-FRIGHTENED;
-		SeeSound "";
-		PainSound "";
-		DeathSound "";
-		ActiveSound "";
-		Obituary "%o met their fate to Beaver";
+		+DECOUPLEDANIMATIONS
+		+NOPAIN
+		+LOOKALLAROUND
+		+SLIDESONWALLS
+		+INVULNERABLE
+		+NODAMAGE
+		+DROPOFF
+		+INTERPOLATEANGLES
 	}
-	
 	States
 	{
-		Spawn:
-			CYBI A 0 A_JumpIfInventory("BeaverHasHitDoor", 1, "ReturnToStage");
-			ONST A 1;
-			CYBI V 0
+	Spawn:
+		M000 A 1;
+		M000 A 1 A_LookEx(0,0,0,0,360,"Idle");
+		Loop;
+	Reading:
+		M000 A 1 SetAnimation('Reading', framerate:17.5, interpolatetics: 6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	DropingNewspaper:
+		M000 A 1 SetAnimation('DropingNewspaper', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1;
+	WaitingFor:
+		M000 A 1 SetAnimation('Waiting', framerate:0, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Lifting:
+		M000 A 1 SetAnimation('Lifting', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 AAAAAAAAAAAAAAAAAAAAAAAA 1;
+		M000 A 1;
+		Goto Idle;
+	ToRun:
+		M000 A 1 SetAnimation('ToRun', framerate:0, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	Idle:
+		M000 A 1 SetAnimation('Idle', framerate:25, interpolatetics: 6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1 BeaverIdle();
+		Wait;
+	Wander:
+		M000 A 1 SetAnimation('Wander', framerate:35, interpolatetics: 4, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	WanderLoop:
+		M000 A 1
+		{
+			FootStep();
+			BeaverWander();
+		}
+		M000 AAAAAAAAAAAAAAAAAAAAA 1 BeaverWander();
+		M000 A 1
+		{
+			FootStep();
+			BeaverWander();
+		}
+		M000 AAAAAAAAAAAAAAAAAAA 1 BeaverWander();
+		Loop;
+	RunChase:
+		M000 A 1 SetAnimation('Run', framerate:35, interpolatetics: 2, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	RunChaseLoop:
+		M000 AAA 1 BeaverRun();
+		M000 A 1
+		{
+			FootStep();
+			BeaverRun();
+		}
+		M000 AAAAAAAAAA 1 BeaverRun();
+		M000 A 1
+		{
+			FootStep();
+			BeaverRun();
+		}
+		M000 AAAAAAAA 1 BeaverRun();
+		Loop;
+	DoorPound:
+		M000 A 1 SetAnimation('Knock', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1
+		{
+			A_TakeInventory("IsChasingFast",999);
+			A_GiveInventory("BeaverHasHitDoor",999);
+		}
+		M000 AAAAA 1;
+		M000 A 1 A_PlaySound("Knock",0,1.0);
+		M000 AAAAAAAAAAAAAA 1;
+		M000 A 1 
+		{
+			Returning = TRUE;
+			A_TakeInventory("BeaverHasHitDoor",999);
+			ACS_NamedExecuteAlways("ReturnToToilet",0,0,0,0);
+		}
+		Goto RunChase;
+	Jumpscare:
+		M000 A 1 
+		{
+			If (IsCrouch == TRUE) { SetAnimation('CrouchJumpscare', framerate:35, interpolatetics: 5, flags:SAF_NOOVERRIDE); }
+			Else If (IsCrouch == FALSE) { SetAnimation('Jumpscare', framerate:35, interpolatetics: 5, flags:SAF_NOOVERRIDE); }
+		}
+		M000 A 1
+		{
+			A_TakeInventory("IsChasingFast",999);
+			A_GiveInventory("BeaverHasHitDoor",999);
+			A_FaceTarget();
+			A_SetAngle(Angle + 180,SPF_INTERPOLATE,AAPTR_TARGET);
+			A_QuakeEx( 1, 1, 1, 15, 0, 64, "", 0, 1, 1, 1, 0, 0, 3, 1);
+			A_PlaySound("BeaverScream",0,1.0);
+			ACS_NamedExecuteAlways("EnemyAttack",0,0,0,0);
+		}
+		M000 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1;
+		M000 A 1 
+		{
+			Returning = TRUE;
+			A_TakeInventory("BeaverHasHitDoor",999);
+			ACS_NamedExecuteAlways("ReturnToToilet",0,0,0,0);
+		}
+		Goto RunChase;
+	ToStand:
+		M000 A 1 SetAnimation('ToStand', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1
+		{
+			IsCrouch = FALSE;
+			A_SetSize(-1,57);
+		}
+		M000 AAAAAAAAAAAAAAAAAAAAAAAAAAA 1;
+		M000 A 1
+		{
+			If (!CheckInventory("IsChasingFast",1,AAPTR_DEFAULT))
 			{
-				if(CheckInventory("IsChasingFast", 1))
+				int RandomDecide = random(1,2);
+				switch (RandomDecide)
 				{
-					SetStateLabel("Run");
-				}
-				else if(CheckInventory("IsOut", 1))
-				{
-					SetStateLabel("LookAround");
-				}
-			}
-			CYBI V 0 A_CustomMissile("BeaverNewspaper",0,0,0,0,0,0);
-			CYBI WXYZ 1;
-			CYBA ABCD 1;
-			CYBA D 0 A_GiveInventory("IsOut", 1);
-			Goto LookAround;
-		Stage:
-			ONST A 1;
-			Loop;
-		LookAround:
-			#### # 0
-			{
-				bFRIGHTENED = false;
-			}
-			#### # 0 A_TakeInventory("IsChasingFast");
-			CYBA E 1 A_LookEX(LOF_NOSOUNDCHECK, 0, 0, 0, 360, "Run");
-			CYBA E 0
-			{
-				if (ishard)
-				{
-					if (random(0, 1024) > 1014-(playercount*18))
-					{
-						SetStateLabel("Run");
-					}
-				}
-				else
-				{
-					if (random(0, 1024) > 1021-(playercount*16))
-					{
-						SetStateLabel("Run");
-					}
+					Case 1:
+					SetStateLabel("Idle");
+					Break;
+					Case 2:
+					SetStateLabel("Wander");
+					Break;
 				}
 			}
-			Loop;
-		DoorPound:
-			#### # 0 A_TakeInventory("IsChasingFast");
-			#### # 0 A_PlaySound("BeaverEnd", 0, 1.5);
-			#### # 0 A_PlaySound("Knock", 0, 4.0);
-			#### # 0 ACS_NamedExecuteAlways("BeaverDoorPound",0,0,0,0);
-			Goto ReturnToStage;
-		Run:
-            #### # 2
-            {
-                bFRIGHTENED = FALSE;
-                ACS_NamedExecuteAlways("BeaverOut",0,0,0,0);
-            }
-        RunLook:
-            CYBI A 1 A_LookEx(0,0,0,0,360,"RunLoop");
-            Loop;
-        RunLoop:
-            CYBI ABCDE 1 A_RunChase();
-            CYBI F 1
-            {
-                A_RunChase();
-               FootStep();
-            }
-            CYBI GHIJKLMN 1 A_RunChase();
-            CYBI O 1
-            {
-                A_RunChase();
-               FootStep();
-            }
-            CYBI PQRSTU 1 A_RunChase();
-            Loop;
-		ReturnToStage:
-			#### # 0 ACS_NamedExecuteAlways("BeaverToilet",0,0,0,0);
-			#### # 0
-			{
-				bFRIGHTENED = false;
-			}
-			#### # 0 A_TakeInventory("IsChasingFast");
-			CYBI ABCDE 1 A_CheckToilet();
-			CYBI F 1
-			{
-				A_CheckToilet();
-				A_PlaySound("BeaverStep", 0, 3.5);
-			}
-			CYBI GHIJKLMN 1 A_CheckToilet();
-			CYBI O 1
-			{
-				A_CheckToilet();
-				A_PlaySound("BeaverStep", 0, 3.5);
-			}
-			CYBI PQRSTU 1 A_CheckToilet();
-			Loop;
-		LoseTarget:
-			#### # 0
-			{
-				bFRIGHTENED = false;
-			}
-			#### # 0 A_TakeInventory("IsChasingFast");
-			CYBA E 0 A_Stop;
-			CYBA E 0 A_ClearTarget;
-			Goto CountWait;
-		CountWait:
-			#### # 0 ACS_NamedExecuteAlways("BeaverToilet",0,0,0,0);
-			#### # 0 A_TakeInventory("IsChasingFast");
-			CYBA E 2 A_Count();
-			Loop;
-		Melee:
-			#### # 0
-			{
-				bFRIGHTENED = false;
-			}
-			#### # 0 A_TakeInventory("IsChasingFast");
-			CYBA F 0 A_QuakeEx( 3, 3, 3, 1, 0, 64, "", 0, 1, 1, 1, 0, 0, 3, 1);
-			CYBA F 0 A_PlaySound("BeaverScream", 0, 1.0);
-			#### # 50 A_KillTarget();
-			#### # 0 ACS_NamedExecuteAlways("BeaverToilet",0,0,0,0);
-			Goto ReturnToStage;
+		}
+		Goto RunChase;
+	ToCrouch:
+		M000 A 1 SetAnimation('ToCrouch', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1
+		{
+			IsCrouch = TRUE;
+			A_SetSize(-1,16);
+		}
+		M000 AAAAAAAAAAAAAAAAAAAAAAAAAAA 1;
+	CrouchIdle:
+		M000 A 1 SetAnimation('CrouchIdle', framerate:35, interpolatetics: 6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1 BeaverIdle();
+		Wait;
+	CrouchWalk:
+		M000 A 1 SetAnimation('CrouchWalk', framerate:35, interpolatetics: 5, flags:SAF_LOOP|SAF_NOOVERRIDE);
+	CrouchWalkLoop:
+		M000 A 1
+		{
+			FootStep();
+			BeaverCrouchWalk();
+		}
+		M000 AAAAAAAAAAAAAAAA 1 BeaverCrouchWalk();
+		M000 A 1
+		{
+			FootStep();
+			BeaverCrouchWalk();
+		}
+		M000 AAAAAAAAAA 1 BeaverCrouchWalk();
+		Loop;
+	}
+}
+
+class BeaverNewspaper : Actor
+{
+	Private Bool OnFloor;
+	override void Activate(Actor activator) 
+	{ 
+		If (OnFloor == FALSE)
+		{
+			A_PlaySound("NewspaperCrack",0,1.0);
+			ACS_NamedExecuteAlways("ForceBeaver",0,0,0,0);
+			Self.Destroy();
+		}
+	}
+	Default
+	{
+		Radius 15;
+		Height 5;
+		Scale 17.5;
+		Activation THINGSPEC_Switch;
+		-SOLID
+		+NOGRAVITY
+		+USESPECIAL
+		+DECOUPLEDANIMATIONS
+	}
+	States
+	{
+	Spawn:
+		M000 A 1;
+		M000 A 1 SetAnimation('Reading', framerate:17.5, interpolatetics: 6, flags:SAF_LOOP|SAF_NOOVERRIDE);
+		M000 A 1;
+		Wait;
+	DropingNewspaper:
+		M000 A 1 SetAnimation('DropingNewspaper', framerate:35, interpolatetics: 6, flags:SAF_NOOVERRIDE);
+		M000 A 1 { OnFloor = TRUE; }
+		M000 A 1;
+		Wait;
 	}
 }
 

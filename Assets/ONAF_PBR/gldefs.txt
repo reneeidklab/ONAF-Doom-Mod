@@ -970,3 +970,11 @@ material texture "Models/Scenery/Bridge/bridge.jpg"
 	glossiness 1.0
 	specularlevel 1.0
 }
+
+material texture "Models/Enemys/BeavOwl/Beaver/Newspaper.jpg"
+{
+	ao "ao/MetalGeneric_ao.jpg"
+	normal "normal/Newspaper_normal.jpg"
+	metallic "metallic/Newspaper_Metallic.jpg"
+	roughness "roughness/Newspaper_roughness.jpg"
+}

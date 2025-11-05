@@ -1,3 +1,9 @@
+NewspaperCrack		Sounds/General/Newspaper_rip.ogg
+$limit NewspaperCrack 1
+$volume NewspaperCrack 7.0
+$rolloff NewspaperCrack 246 192
+
+BeaverEnd		Music/BeaverEnd.ogg
 MENUCONFIRM		Sounds/Menus/CONFIRM.ogg
 BACKMENU		Sounds/Menus/BackMenu.ogg
 
