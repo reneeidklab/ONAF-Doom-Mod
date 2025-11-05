@@ -3,6 +3,7 @@ version "4.14"
 #Include "zscript/Players.txt"
 #Include "zscript/Inventorys.txt"
 #Include "zscript/ONaF1Enemies.txt"
+#Include "zscript/ONaF2Enemies.txt"
 #Include "zscript/Weapons.txt"
 #Include "zscript/EventHandlers.txt"
 

@@ -583,7 +583,7 @@ ACTOR Furnace 20183
 {
   Radius 15
   Height 15
-  Scale 1.0
+  Scale 0.65
   +NOBLOCKMAP
   +NOGRAVITY
   +NOTELEPORT
