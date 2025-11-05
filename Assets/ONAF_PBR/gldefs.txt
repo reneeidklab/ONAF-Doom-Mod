@@ -1,0 +1,972 @@
+// --------------- *Textures*
+
+material texture YELLWALL
+{
+	normal "normal/MetalGeneric_normal.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric_roughness.jpg"
+	ao "ao/MetalGeneric_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CONCWALL
+{
+	normal "normal/ConcreteWall_normal.jpg"
+	specular "specular/ConcreteWall_displacement.jpg"
+	glossiness 4.0
+	specularlevel 2.0
+}
+
+material texture FTILES3
+{
+	normal "normal/TilesC_normal.jpg"
+	specular "specular/TilesC_displacement.jpg"
+	glossiness 3.9
+	specularlevel 2.8
+}
+
+material texture FTILES1
+{
+	AO "AO/FTILES1_AO.jpg"
+	Normal "Normal/FTILES1_Normal.jpg"
+	roughness "roughness/FTILES1_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture CARPETS6
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CARPETS1
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CARPETS2
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CARPETS3
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CARPETS4
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CARPETS5
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture METL1
+{
+	normal "normal/MetalGeneric_normal.jpg"
+	metallic "metallic/ALL_METAL.png"
+	roughness "roughness/MetalGeneric_roughness.jpg"
+	ao "ao/MetalGeneric_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture METL2
+{
+	normal "normal/METL2_normal.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/METL2_roughness.jpg"
+	ao "ao/METL2_displacement.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CONC1
+{
+	normal "normal/CONC1_normal.jpg"
+	specular "specular/CONC1_displacement.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CONC2
+{
+	normal "normal/CONC2_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/CONC2_roughness.jpg"
+	ao "ao/CONC2_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture STARWALL
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CLOWNWA1
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CLOWNWA2
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture ICETEX
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 15.0
+	specularlevel 7.0
+}
+
+material texture TDIRT
+{
+	normal "normal/DIRT_NRM.png"
+	specular "specular/DIRT_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture STARCEIL
+{
+	normal "normal/MetalGeneric2_normal.png"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/MetalGeneric2_smoothness.png"
+	ao "ao/MetalGeneric2_ao.png"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture CONC4
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL1
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL2
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL3
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL4
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL5
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture FWALL6
+{
+	normal "normal/FWALL1_nrm.jpg"
+	metallic "metallic/NO_METAL.png"
+	roughness "roughness/FWALL1_roughness.jpg"
+	ao "ao/FWALL1_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture VIRTWALL
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture PALHACO0
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture GREENWA
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture LAVAROCK
+{
+	normal "normal/CONC1_normal.jpg"
+	specular "specular/CONC1_displacement.jpg"
+	glossiness 19.0
+	specularlevel 4.5
+}
+
+material texture PUZZLE1
+{
+	normal "normal/PUZZLE_NRM.png"
+	specular "specular/PUZZLE_SPEC.png"
+	glossiness 3.0
+	specularlevel 2.5
+}
+
+material texture PUZZLE2
+{
+	normal "normal/PUZZLE_NRM.png"
+	specular "specular/PUZZLE_SPEC.png"
+	glossiness 3.0
+	specularlevel 2.5
+}
+
+material texture OWOOD1
+{
+	normal "normal/OWOOD_NRM.png"
+	specular "specular/OWOOD_SPEC.png"
+	glossiness 3.0
+	specularlevel 2.5
+}
+
+// --------------- *Models*
+
+material texture "Models/Scenery/ONaF1Office/Yellow.png"
+{
+	normal "normal/MetalGeneric_normal.jpg"
+	metallic "metallic/ALL_METAL.png"
+	roughness "roughness/MetalGeneric_roughness.jpg"
+	ao "ao/MetalGeneric_ao.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Caves/rockset1.jpg"
+{
+	normal "normal/CONC1_normal.jpg"
+	specular "specular/CONC1_displacement.jpg"
+	glossiness 2.5
+	specularlevel 3.5
+}
+
+material texture "Models/Scenery/Caves/CONC1.jpg"
+{
+	normal "normal/CONC1_normal.jpg"
+	specular "specular/CONC1_displacement.jpg"
+	glossiness 2.5
+	specularlevel 3.5
+}
+
+material texture "Models/Scenery/ONaF1MusicBox/Music_Box_Handle.jpg"
+{
+	AO "AO/Music_Box_Handle_AO.jpg"
+	Normal "Normal/Music_Box_Handle_Normal.jpg"
+	roughness "roughness/Music_Box_Handle_Roughness.jpg"
+	Metallic "Metallic/Music_Box_Handle_Metallic.jpg"
+}
+
+material texture "Models/Scenery/ONaF1MusicBox/Music_Box_Disk.jpg"
+{
+	AO "AO/Music_Box_Disk_AO.jpg"
+	Normal "Normal/Music_Box_Disk_Normal.jpg"
+	roughness "roughness/Music_Box_Disk_Roughness.jpg"
+	Metallic "Metallic/Music_Box_Disk_Metallic.jpg"
+}
+
+material texture "Models/Scenery/ONaF1MusicBox/Music_Box.jpg"
+{
+	AO "AO/Music_Box_AO.jpg"
+	Normal "Normal/Music_Box_Normal.jpg"
+	roughness "roughness/Music_Box_Roughness.jpg"
+	Metallic "Metallic/Music_Box_Metallic.jpg"
+}
+
+material texture "Models/Scenery/ONaF1MusicBox/Music_Box_Cover.jpg"
+{
+	AO "AO/Music_Box_Cover_AO.jpg"
+	Normal "Normal/Music_Box_Cover_Normal.jpg"
+	roughness "roughness/Music_Box_Cover_Roughness.jpg"
+	Metallic "Metallic/Music_Box_Cover_Metallic.jpg"
+}
+
+material texture "Models/Scenery/ONaF1MusicBox/Music_Box_Cover_Hinges.jpg"
+{
+	AO "AO/Music_Box_Cover_Hinges_AO.jpg"
+	Normal "Normal/Music_Box_Cover_Hinges_Normal.jpg"
+	roughness "roughness/Music_Box_Cover_Hinges_Roughness.jpg"
+	Metallic "Metallic/Music_Box_Cover_Hinges_Metallic.jpg"
+}
+
+material texture "Models/Scenery/ONaF1Office/Banana.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/Banana_Normal.jpg"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Scenery/ONaF1Office/Toaster.jpg"
+{
+	AO "AO/Toaster_AO.jpg"
+	Normal "Normal/Toaster_Normal.jpg"
+	roughness "roughness/Toaster_Roughness.jpg"
+	Metallic "Metallic/Toaster_Metallic.jpg"
+}
+
+/*
+material texture "Models/Monsters/Eyesaur/BodyFlesh.jpg"
+{
+	normal "normal/FLESH_NRM.png"
+	specular "specular/FLESH_SPEC.png"
+	glossiness 6.5
+	specularlevel 0.7
+}
+
+material texture "Models/Monsters/Eyesaur/EyesaurEyes.jpg"
+{
+	normal "normal/FLESH_NRM.png"
+	specular "specular/FLESH_SPEC.png"
+	glossiness 6.5
+	specularlevel 0.7
+}
+*/
+material texture "Models/Scenery/Tentacles/blacktentacle.png"
+{
+	normal "normal/FLESH_NRM.png"
+	specular "specular/FLESH_SPEC.png"
+	glossiness 3.2
+	specularlevel 0.7
+}
+
+material texture "Models/Scenery/Piggy/pink.png"
+{
+	normal "normal/DIRT_NRM.png"
+	specular "specular/DIRT_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Weapons/Tablet/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Francis/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Bill/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Bill/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Coach/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Ellis/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Zoey/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Nick/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Players/Bill/MonitorScreen.jpg"
+{
+	normal "normal/SCREEN_NRM.png"
+	specular "specular/SCREEN_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/WoodenLogs/Logs.jpg"
+{
+	normal "normal/LOGS_NRM.png"
+	specular "specular/LOGS_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/WizardHat/wizardhat.jpg"
+{
+	normal "normal/LOGS_NRM.png"
+	specular "specular/LOGS_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Vent/vent001.jpg"
+{
+	normal "normal/Vent_NRM.png"
+	specular "specular/Vent_SPEC.png"
+	glossiness 2.5
+	specularlevel 1.0
+}
+
+material texture "Models/Weapons/Flashlight/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+
+material texture "Models/Characters/Zoey/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+
+material texture "Models/Characters/Zoey/ZoeyBody.jpg"
+{
+	AO "AO/ZoeyBody_AO.jpg"
+	Normal "Normal/ZoeyBody_Normal.jpg"
+	roughness "roughness/ZoeyBody_Roughness.jpg"
+	Metallic "Metallic/ZoeyBody_Metallic.png"
+}
+
+material texture "Models/Characters/Zoey/ZoeyHair.png"
+{
+	AO "AO/ZoeyHair_AO.jpg"
+	Normal "Normal/ZoeyHair_Normal.jpg"
+	roughness "roughness/ZoeyHair_Roguhness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Zoey/ZoeyHead.jpg"
+{
+	AO "AO/ZoeyHead_AO.jpg"
+	Normal "Normal/ZoeyHead_Normal.jpg"
+	roughness "roughness/ZoeyHead_Roughness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Zoey/ZoeyEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Francis/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Francis/FrancisHead.jpg"
+{
+	AO "AO/FrancisHead_AO.jpg"
+	Normal "Normal/FrancisHead_Normal.jpg"
+	roughness "roughness/FrancisHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Francis/FrancisBeard.jpg"
+{
+	AO "AO/FrancisBeard_AO.jpg"
+	Normal "Normal/FrancisBeard_Normal.jpg"
+	roughness "roughness/FrancisBeard_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Francis/FrancisBody.jpg"
+{
+	AO "AO/FrancisBody_AO.jpg"
+	Normal "Normal/FrancisBody_Normal.jpg"
+	roughness "roughness/FrancisBody_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Francis/FrancisEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Nick/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Nick/NickHead.jpg"
+{
+	AO "AO/NickHead_AO.jpg"
+	Normal "Normal/NickHead_Normal.jpg"
+	roughness "roughness/NickHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Nick/NickHair.png"
+{
+	AO "AO/NickHair_AO.jpg"
+	Normal "Normal/NickHair_Normal.jpg"
+	roughness "roughness/NickHair_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Nick/NickBody.jpg"
+{
+	AO "AO/NickBody_AO.jpg"
+	Normal "Normal/NickBody_Normal.jpg"
+	roughness "roughness/NickBody_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Nick/NickEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Rochelle/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Rochelle/RochelleEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+	
+material texture "Models/Characters/Rochelle/RochelleHead.jpg"
+{
+	AO "AO/RochelleHead_AO.jpg"
+	Normal "Normal/RochelleHead_Normal.jpg"
+	roughness "roughness/RochelleHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Rochelle/RochelleHair.png"
+{
+	AO "AO/RochelleHair_AO.jpg"
+	Normal "Normal/RochelleHair_Normal.jpg"
+	roughness "roughness/RochelleHair_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Rochelle/RochelleBody.jpg"
+{
+	AO "AO/RochelleBody_AO.jpg"
+	Normal "Normal/RochelleBody_Normal.jpg"
+	roughness "roughness/RochelleBody_Smoothness.jpg"
+	Metallic "Metallic/RochelleBody_Metallic.png"
+}
+
+material texture "Models/Characters/Louis/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Louis/LouisEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+	
+material texture "Models/Characters/Louis/LouisHead.jpg"
+{
+	AO "AO/LouisHead_AO.jpg"
+	Normal "Normal/LouisHead_Normal.jpg"
+	roughness "roughness/LouisHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Louis/LouisHair.png"
+{
+	AO "AO/LouisHair_AO.jpg"
+	Normal "Normal/LouisHair_Normal.jpg"
+	roughness "roughness/LouisHair_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Louis/LouisBody.jpg"
+{
+	AO "AO/LouisBody_AO.jpg"
+	Normal "Normal/LouisBody_Normal.jpg"
+	roughness "roughness/LouisBody_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Bill/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Bill/BillEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+	
+material texture "Models/Characters/Bill/BillHead.jpg"
+{
+	AO "AO/BillHead_AO.jpg"
+	Normal "Normal/BillHead_Normal.jpg"
+	roughness "roughness/BillHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Bill/BillHair.png"
+{
+	AO "AO/BillHair_AO.jpg"
+	Normal "Normal/BillHair_Normal.jpg"
+	roughness "roughness/BillHair_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Bill/BillBody.jpg"
+{
+	AO "AO/BillBody_AO.jpg"
+	Normal "Normal/BillBody_Normal.jpg"
+	roughness "roughness/BillBody_Smoothness.jpg"
+	Metallic "Metallic/BillBody_Metallic.jpg"
+}
+
+material texture "Models/Characters/Ellis/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Ellis/EllisEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+	
+material texture "Models/Characters/Ellis/EllisHead.jpg"
+{
+	AO "AO/EllisHead_AO.jpg"
+	Normal "Normal/EllisHead_Normal.jpg"
+	roughness "roughness/EllisHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Ellis/EllisHair.jpg"
+{
+	AO "AO/EllisHair_AO.jpg"
+	Normal "Normal/EllisHair_Normal.jpg"
+	roughness "roughness/EllisHair_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Ellis/EllisBody.jpg"
+{
+	AO "AO/EllisBody_AO.jpg"
+	Normal "Normal/EllisBody_Normal.jpg"
+	roughness "roughness/EllisBody_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Ellis/EllisClothes.jpg"
+{
+	AO "AO/EllisClothes_AO.jpg"
+	Normal "Normal/EllisClothes_Normal.jpg"
+	roughness "roughness/EllisClothes_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Coach/Flashlight.jpg"
+{
+	AO "AO/Flashlight_AO.jpg"
+	Normal "Normal/Flashlight_Normal.jpg"
+	roughness "roughness/Flashlight_Roughness.jpg"
+	Metallic "Metallic/Flashlight_Metallic.jpg"
+}
+	
+material texture "Models/Characters/Coach/CoachEye.jpg"
+{
+	AO "AO/AO_None.png"
+	Normal "Normal/flat_n.png"
+	roughness "roughness/GenericRoughness.png"
+	Metallic "Metallic/NO_METAL.png"
+}
+		
+material texture "Models/Characters/Coach/CoachHead.jpg"
+{
+	AO "AO/CoachHead_AO.jpg"
+	Normal "Normal/CoachHead_Normal.jpg"
+	roughness "roughness/CoachHead_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Coach/CoachBelt.jpg"
+{
+	normal "normal/MetalGeneric_normal.jpg"
+	metallic "metallic/ALL_METAL.png"
+	roughness "roughness/MetalGeneric_roughness.jpg"
+	ao "ao/MetalGeneric_ao.jpg"
+}
+	
+material texture "Models/Characters/Coach/CoachSweter.jpg"
+{
+	AO "AO/CoachSweter_AO.jpg"
+	Normal "Normal/CoachSweter_Normal.jpg"
+	roughness "roughness/CoachSweter_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Characters/Coach/Coachkneepads.jpg"
+{
+	normal "normal/MetalGeneric_normal.jpg"
+	metallic "metallic/ALL_METAL.png"
+	roughness "roughness/MetalGeneric_roughness.jpg"
+	ao "ao/MetalGeneric_ao.jpg"
+}
+
+material texture "Models/Characters/Coach/CoachBag.jpg"
+{
+	AO "AO/CoachBag_AO.jpg"
+	Normal "Normal/CoachBag_Normal.jpg"
+	roughness "roughness/CoachBag_Smoothness.jpg"
+	Metallic "Metallic/CoachBag_Metallic.png"
+}
+
+material texture "Models/Characters/Coach/CoachPants.jpg"
+{
+	AO "AO/CoachPants_AO.jpg"
+	Normal "Normal/CoachPants_Normal.jpg"
+	roughness "roughness/CoachPants_Smoothness.jpg"
+	Metallic "Metallic/NO_METAL.png"
+}
+
+material texture "Models/Scenery/WallSun/WallSun.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/CloudThing/clouds.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Conduit/conduit_128.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Caves/standardSurface1.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Caves/crystal_crystal_BaseColor.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Fan/deskfan.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Star/dkyellow.png"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Backpack/backpack.jpg"
+{
+	normal "normal/flat.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Boxes/boxes1.jpg"
+{
+	normal "normal/boxes1_nrm.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Boxes/woodcrates01a.jpg"
+{
+	normal "normal/boxes1_nrm.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
+
+material texture "Models/Scenery/Bridge/bridge.jpg"
+{
+	normal "normal/bridge_nrm.jpg"
+	specular "specular/spec.jpg"
+	glossiness 1.0
+	specularlevel 1.0
+}
