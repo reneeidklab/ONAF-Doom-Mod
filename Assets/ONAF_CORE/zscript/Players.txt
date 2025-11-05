@@ -14,7 +14,6 @@ class ThePlayer : PlayerPawn
         String floorTex = TexMan.GetName(self.floorpic);
         return (floorTex == texName);
     }
-	
 	void PlayerVoid()
 	{
 		If (Self.Health > 0)
@@ -33,6 +32,8 @@ class ThePlayer : PlayerPawn
 			{ 
 				A_ChangeModel("",0,"models/Characters/Bill","ONAFBill.iqm"); 
 				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Bill","ONAFBillBody.iqm");  }
+				If (ViewHeight < 46) { A_SpawnItemEx ("BillSmoke", 7, 5, 27, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
+				Else { A_SpawnItemEx ("BillSmoke", 7, 2.5, 62, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
 			}
 			Else If (CheckInventory("IsFrancis",1,AAPTR_DEFAULT)) 
 			{ 
@@ -59,14 +60,8 @@ class ThePlayer : PlayerPawn
 				A_ChangeModel("",0,"models/Characters/Rochelle","ONAFRochelle.iqm"); 
 				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Rochelle","ONAFRochelleBody.iqm");  }
 			}
-			Else If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) 
-			{ 
-				A_ChangeModel("",0,"models/Characters/Smith","ONAFSmith.iqm"); 
-				If (Legs) { Legs.A_ChangeModel("",0,"models/Characters/Smith","ONAFSmithBody.iqm");  }
-			}
 		}
 	}
-	
 	void FootStep()
 	{
 		If (CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
@@ -79,7 +74,7 @@ class ThePlayer : PlayerPawn
 			If (Player.ViewHeight < 46) { A_PlaySound("CarpetStep",0,0.5); }
 			Else { A_PlaySound("CarpetStep",0,1.0); }
 		}
-		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2") || CheckFloorTexture("OWLVENT1") || CheckFloorTexture("OWLVENT2"))
+		Else If (CheckFloorTexture("OWLVENT1") || CheckFloorTexture("OWLVENT2") || CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
 		{
 			If (Player.ViewHeight < 46) { A_PlaySound("VentStep",0,0.5); }
 			Else { A_PlaySound("VentStep",0,1.0); }
@@ -94,7 +89,7 @@ class ThePlayer : PlayerPawn
 			If (Player.ViewHeight < 46) { A_PlaySound("GrassStep",0,0.5); }
 			Else { A_PlaySound("GrassStep",0,1.0); }
 		}
-		Else If (CheckFloorTexture("CONC1"))
+		Else If (CheckFloorTexture("CONC1") || CheckFloorTexture("GREENWA"))
 		{
 			If (Player.ViewHeight < 46) { A_PlaySound("StoneStep",0,0.5); }
 			Else { A_PlaySound("StoneStep",0,1.0); }
@@ -111,42 +106,41 @@ class ThePlayer : PlayerPawn
 		A_ScaleVelocity(0.34);
 		If (CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
 		{
-			A_PlaySound("TileStep",0,1.5);
-			A_PlaySound("TileStep",0,1.5);
+			A_PlaySound("TileStep",0,1.0);
+			A_PlaySound("TileStep",0,1.0);
 		}
-		Else If (CheckFloorTexture("CARPETS1") || CheckFloorTexture("CARPETS2") || CheckFloorTexture("CARPETS3") || CheckFloorTexture("CARPETS6"))
+		Else If (CheckFloorTexture("CARPETS1") || CheckFloorTexture("CARPETS2") || CheckFloorTexture("CARPETS3") || CheckFloorTexture("CARPETS4") || CheckFloorTexture("CARPETS5") || CheckFloorTexture("CARPETS6"))
 		{
-			A_PlaySound("CarpetStep",0,1.5);
-			A_PlaySound("CarpetStep",0,1.5);
+			A_PlaySound("CarpetStep",0,1.0);
+			A_PlaySound("CarpetStep",0,1.0);
 		}
-		Else If (CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
+		Else If (CheckFloorTexture("OWLVENT1") || CheckFloorTexture("OWLVENT2") || CheckFloorTexture("METL1") || CheckFloorTexture("METL2"))
 		{
-			A_PlaySound("VentStep",0,1.5);
-			A_PlaySound("VentStep",0,1.5);
+			A_PlaySound("VentStep",0,1.0);
+			A_PlaySound("VentStep",0,1.0);
 		}
 		Else If (CheckFloorTexture("GLAS1"))
 		{
-			A_PlaySound("GlassStep",0,1.5);
-			A_PlaySound("GlassStep",0,1.5);
+			A_PlaySound("GlassStep",0,1.0);
+			A_PlaySound("GlassStep",0,1.0);
 		}
 		Else If (CheckFloorTexture("TDIRT"))
 		{
-			A_PlaySound("GrassStep",0,1.5);
-			A_PlaySound("GrassStep",0,1.5);
+			A_PlaySound("GrassStep",0,1.0);
+			A_PlaySound("GrassStep",0,1.0);
 		}
-		Else If (CheckFloorTexture("CONC1"))
+		Else If (CheckFloorTexture("CONC1") || CheckFloorTexture("GREENWA"))
 		{
-			A_PlaySound("StoneStep",0,1.5);
-			A_PlaySound("StoneStep",0,1.5);
+			A_PlaySound("StoneStep",0,1.0);
+			A_PlaySound("StoneStep",0,1.0);
 		}
 		Else If (CheckFloorTexture("OWOOD1"))
 		{
-			A_PlaySound("WoodStep",0,1.5);
-			A_PlaySound("WoodStep",0,1.5);
+			A_PlaySound("WoodStep",0,1.0);
+			A_PlaySound("WoodStep",0,1.0);
 		}
 	}
-	
-	/*
+	override void DeathThink() { if(player)player.cmd.buttons&=~BT_USE; super.DeathThink(); }
 	void SpawnLegs(void)
 	{
 		if (LegsAlreadySpawned)
@@ -160,13 +154,15 @@ class ThePlayer : PlayerPawn
 			Legs = legs;
 		}
 	}
-	*/
-	
-    void DestroyLegs(void) { if (!Legs) { Legs = null; LegsAlreadySpawned = false; } }
+    void DestroyLegs(void)
+    {
+        if (!Legs)
+        {
+            Legs = null;
+            LegsAlreadySpawned = false;
+        }
+    }
 	void SyncLegsState() { if (Legs && p_anim != Legs.p_anim) { if (Legs.p_anim = p_anim) { Legs.SetStateLabel(p_anim); } } }
-	
-	
-	override void DeathThink() { if(player)player.cmd.buttons&=~BT_USE; super.DeathThink(); }
 	override void Tick()
 	{
 		super.Tick();
@@ -192,22 +188,20 @@ class ThePlayer : PlayerPawn
 		bool IdlePivotRight;
 		bool IdlePivotLeft;
 		bool chasecam = player.cheats & CF_CHASECAM && !death;
-		//if (!LegsAlreadySpawned) { SpawnLegs(); }
+		if (!LegsAlreadySpawned) { SpawnLegs(); }
 		if (!legs || legs.bDestroyed) { DestroyLegs(); }
-		if (Legs) { Legs.SetOrigin(Pos, true); Legs.Angle = Angle; SyncLegsState(); }
-		
+        if (!Death && Legs)
+        {
+			SyncLegsState();
+            Legs.SetOrigin(Pos, true);
+            Legs.Angle = Angle;
+        }
 		if (!chasecam)
         {
             if (GetCVar("cl_hidelegs")) { if (Legs) { Legs.A_SetRenderStyle(0.0,STYLE_None); } }
             else { if (Legs) { Legs.A_SetRenderStyle(1.0,STYLE_Normal); } }
         }
 		if (chasecam || death) { if (Legs) { Legs.A_SetRenderStyle(0.0,STYLE_None); } }
-		
-		If (CheckInventory("IsBill",1,AAPTR_DEFAULT) && !death)
-		{
-			If (crouching) { A_SpawnItemEx ("BillSmoke", 7, 5, 27, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
-			Else { A_SpawnItemEx ("BillSmoke", 7, 2.5, 62, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION); }
-		}
 		If (CheckInventory("Flashlight",1,AAPTR_DEFAULT))
 		{
 			If (Running && !Crouching)
@@ -449,8 +443,7 @@ class ThePlayer : PlayerPawn
 		M000 A 1;
 		M000 A 1
 		{
-			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithJump"); }
-			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisJump"); }
+			If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisJump"); }
 			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillJump"); }
 			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachJump"); }
 			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyJump"); }
@@ -487,8 +480,7 @@ class ThePlayer : PlayerPawn
 		M000 A 0 SetAnimation('DeathSmack', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
 		M000 A 0
 		{
-			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
-			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
 			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
 			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
 			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
@@ -507,8 +499,7 @@ class ThePlayer : PlayerPawn
 		M000 A 0 SetAnimation('DeathGrab', framerate:17.5, interpolatetics:2, flags:SAF_NOOVERRIDE);
 		M000 A 0
 		{
-			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
-			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
 			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
 			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
 			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
@@ -533,8 +524,7 @@ class ThePlayer : PlayerPawn
 		M000 A 0 SetAnimation('DeathJump', framerate:35, interpolatetics:2, flags:SAF_NOOVERRIDE);
 		M000 A 0
 		{
-			If (CheckInventory("IsSmith",1,AAPTR_DEFAULT)) { A_StartSound("SmithDie"); }
-			Else If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
+			If (CheckInventory("IsLouis",1,AAPTR_DEFAULT)) { A_StartSound("LouisDie"); }
 			Else If (CheckInventory("IsBill",1,AAPTR_DEFAULT)) { A_StartSound("BillDie"); }
 			Else If (CheckInventory("IsCoach",1,AAPTR_DEFAULT)) { A_StartSound("CoachDie"); }
 			Else If (CheckInventory("IsZoey",1,AAPTR_DEFAULT)) { A_StartSound("ZoeyDie"); }
@@ -733,7 +723,7 @@ Class BillSmoke : ACTOR
 		Height 4;
 		RenderStyle "Add";
 		Alpha 0.35;
-		scale 0.02;
+		scale 0.07;
 		+FORCEPAIN;
 		+NOBLOCKMAP;
 		+NOGRAVITY;

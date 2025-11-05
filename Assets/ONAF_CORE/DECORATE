@@ -579,21 +579,21 @@ ACTOR LaserDmg 20182
   }
 }
 
-ACTOR Furnace 20183
+ACTOR ONAF3Furnace 20183
 {
-  Radius 15
-  Height 15
-  Scale 0.65
-  +NOBLOCKMAP
-  +NOGRAVITY
-  +NOTELEPORT
-  +CANNOTPUSH
-  States
-  {
-  Spawn:
-    CYBI A -1
-    Stop
-  }
+	Radius 15
+	Height 15
+	scale 1.0
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	-SOLID
+	States
+	{
+	Spawn:
+		CYBI A -1
+		Stop
+	}
 }
 
 ACTOR AmbienceActor 20186
@@ -1665,25 +1665,6 @@ ACTOR Fan 11010
 	CYBA ABC 1
     Loop
   }
-}
-
-ACTOR BeaverNewspaper 18900
-{
-	Radius 18
-	Height 18
-	Scale 1.0
-	+NOGRAVITY
-	+NOBLOCKMAP
-	+NOTELEPORT
-	+CANNOTPUSH
-	States
-	{
-	Spawn:
-		CYBI A 0
-		CYBI ABCDEFGHIJK 1
-		CYBI K -1
-		Stop
-	}
 }
 
 ACTOR ClownProxIn 19000

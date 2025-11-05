@@ -1,7 +1,8 @@
 Model BBB2
 {
-	Path "Models/Enemys/ONAF2/BBB2"
+	Path "Models\Enemys\BirthdayBoyBlam"
 	Model 0 "blamPlaceholder.iqm"
+	SKIN 0 "BBB.jpg"
 	Scale 1.0 1.0 1.0
 	AngleOffset 90
 	Offset 0 0 0
@@ -211,7 +212,7 @@ Model ONAFRevolver
 
 Model ONAF2GrunkfussFrame
 {
-	Path "Models/Enemys/ONAF1/Grunkfuss"
+	Path "Models/Enemys/GrunkfussTheClown"
 	Model 0 "ONAFGrunkFrame.obj"
 	Scale 2.0 2.0 2.0
 	AngleOffset 90
@@ -431,15 +432,13 @@ Model Sink
    FrameIndex CYBI A 0 0
 }
 
-Model Furnace
+Model ONAF3Furnace
 {
 	Path "Models/Scenery/Furnace"
-	Model 0 "Furnace.obj"
-	Scale 64.0 64.0 64.0
+	Model 0 "ONAF3Furnace.obj"
+	Scale 1.0 1.0 1.0
 	AngleOffset 90
 	Offset 0 0 -8
-	
-	// Idle
 	FrameIndex CYBI A 0 0
 }
 
@@ -518,7 +517,7 @@ Model SwitchOutlet
 
 Model GoldenFlumpty1
 {
-	Path "Models/Enemys/ONAF1/GoldenFlumpty"
+	Path "Models/Enemys/Flumpty/Golden"
 	MODEL 0 "ONAFGoldenFlumpty.iqm"
 	Scale 2.2 2.2 2.2
 	AngleOffset 90
@@ -611,7 +610,7 @@ Model Flashlight
 
 Model BBB
 {
-	Path "Models\Enemys\ONAF1\BBB"
+	Path "Models\Enemys\BirthdayBoyBlam"
 	MODEL 0 "ONAFBBB.iqm"
 	Scale 32.0 32.0 32.0
 	AngleOffset 90
@@ -1632,105 +1631,29 @@ Model Phone
 
 Model Beaver
 { 
-	Path "Models/Enemys/ONAF1/Beaver"
-	MODEL 0 "BeaverStage.obj"
-	Scale 10.0 10.0 10.0
+	Path "Models/Enemys/BeavOwl/Beaver"
+	MODEL 0 "ONAF1Beaver.iqm"
+	Scale 1.0 1.0 1.0
 	AngleOffset 90
 	Offset 0 0 0
-	
-	FrameIndex ONST A 0 0
+	CORRECTPIXELSTRETCH
+	BaseFrame
 }
 
 Model BeaverNewspaper
-{
-	Path "Models/Enemys/ONAF1/Beaver"
-	Model 0 "jornal.md3"
-	Scale 20.0 20.0 20.0
+{ 
+	Path "Models/Enemys/BeavOwl/Beaver"
+	MODEL 0 "ONAF1BeaverNewspaper.iqm"
+	Scale 1.0 1.0 1.0
 	AngleOffset 90
 	Offset 0 0 0
-	
-	FrameIndex CYBI A 0 0
-	FrameIndex CYBI B 0 1
-	FrameIndex CYBI C 0 2
-	FrameIndex CYBI D 0 3
-	FrameIndex CYBI E 0 4
-	FrameIndex CYBI F 0 5
-	FrameIndex CYBI G 0 6
-	FrameIndex CYBI H 0 7
-	FrameIndex CYBI I 0 8
-	FrameIndex CYBI J 0 9
-	FrameIndex CYBI K 0 10
-}
-
-Model Beaver
-{
-	Path "Models/Enemys/Beaver"
-	Model 0 "Beaver.iqm"
-	Scale 10.0 10.0 10.0
-	AngleOffset 90
-	Offset 0 0 0
-	
-	// Run
-	FrameIndex CYBI A 0 0
-	FrameIndex CYBI B 0 1
-	FrameIndex CYBI C 0 2
-	FrameIndex CYBI D 0 3
-	FrameIndex CYBI E 0 4
-	FrameIndex CYBI F 0 5 //*step*
-	FrameIndex CYBI G 0 6
-	FrameIndex CYBI H 0 7
-	FrameIndex CYBI I 0 8
-	FrameIndex CYBI J 0 9
-	FrameIndex CYBI K 0 10
-	FrameIndex CYBI L 0 11
-	FrameIndex CYBI M 0 12
-	FrameIndex CYBI N 0 13
-	FrameIndex CYBI O 0 14 //*step*
-	FrameIndex CYBI P 0 15
-	FrameIndex CYBI Q 0 16
-	FrameIndex CYBI R 0 17
-	FrameIndex CYBI S 0 18
-	FrameIndex CYBI T 0 19
-	FrameIndex CYBI U 0 20
-	
-	// NewspaperSitIdle
-	FrameIndex CYBI V 0 21
-	
-	// DropNewspaper
-	FrameIndex CYBI W 0 22
-	FrameIndex CYBI X 0 23
-	FrameIndex CYBI Y 0 24
-	
-	// SitIdle
-	FrameIndex CYBI Z 0 25
-	
-	// SitIdleToStand
-	FrameIndex CYBA A 0 26
-	FrameIndex CYBA B 0 27
-	FrameIndex CYBA C 0 28
-	FrameIndex CYBA D 0 29
-	
-	// Idle
-	FrameIndex CYBA E 0 30
-	
-	// Melee
-	FrameIndex CYBA F 0 31
-	FrameIndex CYBA G 0 32
-	FrameIndex CYBA H 0 33
-	FrameIndex CYBA I 0 34
-	FrameIndex CYBA J 0 35
-	FrameIndex CYBA K 0 36
-	FrameIndex CYBA L 0 37
-	FrameIndex CYBA M 0 38
-	FrameIndex CYBA N 0 39
-	FrameIndex CYBA O 0 40
-	FrameIndex CYBA P 0 41
-	FrameIndex CYBA Q 0 42
+	CORRECTPIXELSTRETCH
+	BaseFrame
 }
 
 Model Grunkfuss
 {
-	Path "Models/Enemys/ONAF1/Grunkfuss"
+	Path "Models/Enemys/Grunkfuss"
 	Model 0 "ONAFGrunkFussTheClown.iqm"
 	Scale 1.0 1.0 1.0
 	AngleOffset 90
@@ -1890,7 +1813,7 @@ Model Grunkfuss
 
 Model Flumpty
 {
-	Path "Models/Enemys/ONAF1/Flumpty"
+	Path "Models/Enemys/Flumpty"
 	Model 0 "ONAF1Flumpty.iqm"
 	Scale 1.0 1.0 1.0
 	AngleOffset 90
@@ -2341,7 +2264,7 @@ model BowlingPin
 
 Model Redman
 {
-	Path "Models/Enemys/ONAF1/Redman"
+	Path "Models/Enemys/Redman"
 	Model 0 "ONAF1Redman.iqm"
 	Scale 1.0 1.0 1.0
 	AngleOffset 90

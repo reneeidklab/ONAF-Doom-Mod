@@ -4,6 +4,13 @@ graphic M_MODOPT, 431, 76
 	YScale 5.000
 }
 
+texture DOOR1, 1024, 1024
+{
+   XScale 12
+   YScale 12
+   Patch DOOR1, 0, 0
+}
+
 texture CLOUDSKY, 800, 100
 {
    XScale 1

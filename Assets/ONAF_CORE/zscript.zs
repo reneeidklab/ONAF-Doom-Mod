@@ -33,27 +33,30 @@ class SwitchOutlet : Actor
 	}
 }
 
-class Cactus : SwitchableDecoration
+class Cactus : Actor
 {
+	override void Activate(Actor activator) 
+	{ 
+		A_PlaySound("Cacto",0,3.5);
+		SetStateLabel("ImACactus");
+	}
 	Default
 	{
 		Radius 15;
 		Height 5;
 		Scale 1.0;
 		Activation THINGSPEC_Switch;
-		-SOLID;
-		+NOGRAVITY;
-		+USESPECIAL;
+		-SOLID
+		+NOGRAVITY
+		+USESPECIAL
 	}
 	
 	States
 	{
 	Spawn:
 		CYBI A 1;
-		Loop;
-	Inactive:
-	Active:
-		CYBI A 0 A_PlaySound("Cacto", 0, 3.5);
+		Wait;
+	ImACactus:
 		CYBI ABCDEFGHIJKLMNO 1;
 		Goto Spawn;
 	}

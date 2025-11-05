@@ -40,6 +40,8 @@ brightmap texture "Models/Scenery/Caves/standardSurface1.jpg" { map "Models/Scen
 
 brightmap texture "Models/Scenery/ONaF1Office/Toaster.jpg" { map "Models/Scenery/ONaF1Office/Toaster_BM.jpg" }
 
+brightmap texture "Models/Enemys/BeavOwl/Beaver/BeaverEye.png" { map "Models/Enemys/BeavOwl/Beaver/BeaverEye.png" }
+
 //-------------------------------------------------------------------------------------------
 //
 // Lights
