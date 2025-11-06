@@ -22,7 +22,7 @@ episode GAME1N1 { name = "Flumpty's House of Horrors" key = "f" }
 
 gameinfo 
 {
-	AddEventHandlers = "HeadBobbing"
+	AddEventHandlers = "HeadBobbing", "WatcherHandler"
 	CursorPic = "MENUCURS"
 	DrawReadThis = false
 	QuitMessages = "Quit the game! \nFlumpty always come back.", 

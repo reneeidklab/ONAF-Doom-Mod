@@ -6,6 +6,7 @@ version "4.14"
 #Include "zscript/ONaF2Enemies.txt"
 #Include "zscript/Weapons.txt"
 #Include "zscript/EventHandlers.txt"
+#Include "zscript/Scenery.txt"
 
 class SwitchOutlet : Actor
 {
