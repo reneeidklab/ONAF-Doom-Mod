@@ -1,3 +1,56 @@
+Model Watcher
+{
+	Path "Models\Characters\Zoey"
+	Model 0 "ONAFNotZoey.iqm"
+	Scale 1.0 1.0 1.0
+	AngleOffset 90
+	Offset 0 0 0
+	
+	// Walk
+	FrameIndex CYBI A 0 0
+	FrameIndex CYBI B 0 1
+	FrameIndex CYBI C 0 2
+	FrameIndex CYBI D 0 3
+	FrameIndex CYBI E 0 4
+	FrameIndex CYBI F 0 5
+	FrameIndex CYBI G 0 6
+	FrameIndex CYBI H 0 7
+	FrameIndex CYBI I 0 8
+	FrameIndex CYBI J 0 9
+	FrameIndex CYBI K 0 10
+	FrameIndex CYBI L 0 11
+	FrameIndex CYBI M 0 12
+	FrameIndex CYBI N 0 13
+	FrameIndex CYBI O 0 14
+	FrameIndex CYBI P 0 15
+	FrameIndex CYBI Q 0 16
+	FrameIndex CYBI R 0 17
+	FrameIndex CYBI S 0 18
+	FrameIndex CYBI T 0 19
+	FrameIndex CYBI U 0 20
+	FrameIndex CYBI V 0 21
+	FrameIndex CYBI W 0 22
+	FrameIndex CYBI X 0 23
+	FrameIndex CYBI Y 0 24
+	FrameIndex CYBI Z 0 25
+	
+	FrameIndex CYBA A 0 26
+	FrameIndex CYBA B 0 27
+	FrameIndex CYBA C 0 28
+	FrameIndex CYBA D 0 29
+	FrameIndex CYBA E 0 30
+	FrameIndex CYBA F 0 31
+	FrameIndex CYBA G 0 32
+	FrameIndex CYBA H 0 33
+	FrameIndex CYBA I 0 34
+	FrameIndex CYBA J 0 35
+	FrameIndex CYBA K 0 36
+	FrameIndex CYBA L 0 37
+	FrameIndex CYBA M 0 38
+	FrameIndex CYBA N 0 39
+	FrameIndex CYBA O 0 40
+}
+
 Model BBB2
 {
 	Path "Models\Enemys\BirthdayBoyBlam"

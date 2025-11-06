@@ -1,0 +1,99 @@
+
+class Watcher : Actor
+{
+	int time;
+
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		PlayerPawn p = PlayerPawn(players[0].mo);
+		if (p == null)
+		{
+			return;
+		}
+		
+		double dist = Distance3D(p);
+		
+		/*
+		if (dist < 162)
+		{
+			A_FadeOut(0.05);
+		}
+		*/
+	}
+	
+	void A_WatcherWalk()
+	{
+		A_ChangeVelocity(1.25, 0.0, 0.0, 1);
+	}
+
+	Default
+	{
+		Height 64;
+		Radius 12;
+		+NOPAIN;
+		+INVULNERABLE;
+		+NOTIMEFREEZE;
+		+NOCLIP;
+		Monster;
+		RenderStyle "Translucent";
+		Alpha 0.6;
+		Scale 4.7;
+	}
+	
+	States
+	{
+	Spawn:
+		CYBI ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_WatcherWalk();
+		CYBA ABCDEFGHIJKLMNO 2 A_WatcherWalk();
+		Loop;
+	}
+}
+
+class WatcherController : Thinker
+{
+	int timer;
+
+	override void Tick()
+	{
+		if (players.size() > 2)
+		{
+			return;
+		}
+		
+		timer++;
+		if (timer % (35*8) == 0)
+		{
+			if (random(0, 100) > 96)
+			{
+				SpawnWatcher();
+			}
+		}
+	}
+	
+	void SpawnWatcher()
+	{
+		let p = PlayerPawn(Players[0].mo);
+		if (p == null) return;
+		
+		
+	}
+}
+
+class WatcherHandler : EventHandler
+{
+	override void WorldLoaded(WorldEvent e)
+	{
+		if (ThinkerIterator.Create("WatcherController").Next() == null)
+		{
+			new("WatcherController");
+			//Console.Printf("WatcherController iniciado");
+		}
+	}
+}
