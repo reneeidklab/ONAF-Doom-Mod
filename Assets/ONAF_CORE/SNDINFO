@@ -3,6 +3,11 @@ $limit NewspaperCrack 1
 $volume NewspaperCrack 7.0
 $rolloff NewspaperCrack 246 192
 
+GrunkHonk		Sounds/VoiceLines/Enemys/GrunkfussTheClown/Honk.ogg
+$limit GrunkHonk 1
+$volume GrunkHonk 7.0
+$rolloff GrunkHonk 246 192
+
 BeaverEnd		Music/BeaverEnd.ogg
 MENUCONFIRM		Sounds/Menus/CONFIRM.ogg
 BACKMENU		Sounds/Menus/BackMenu.ogg
@@ -48,6 +53,12 @@ $limit GoldenFlumptyAmbience 1
 $volume GoldenFlumptyAmbience 7.0
 $attenuation GoldenFlumptyAmbience 0
 
+$random JumpscareSting	{JumpscareSting1}
+JumpscareSting1		Music/JumpscareOST.ogg
+
+$limit JumpscareSting 1
+$volume JumpscareSting 7.0
+$attenuation JumpscareSting 0
 
 DSPSTOP		Sounds/Menus/DSPSTOP
 

@@ -266,7 +266,7 @@ Model ONAFRevolver
 Model ONAF2GrunkfussFrame
 {
 	Path "Models/Enemys/GrunkfussTheClown"
-	Model 0 "ONAFGrunkFrame.obj"
+	Model 0 "ONAF2GrunkFrame.obj"
 	Scale 2.0 2.0 2.0
 	AngleOffset 90
 	Offset 0 0 -76
@@ -1704,164 +1704,15 @@ Model BeaverNewspaper
 	BaseFrame
 }
 
-Model Grunkfuss
+Model GrunkfussTheClown
 {
-	Path "Models/Enemys/Grunkfuss"
-	Model 0 "ONAFGrunkFussTheClown.iqm"
+	Path "Models/Enemys/GrunkfussTheClown"
+	Model 0 "ONAF1GrunkFussTheClown.iqm"
 	Scale 1.0 1.0 1.0
 	AngleOffset 90
 	Offset 0 0 0
-	
-	// Crawl
-	FrameIndex CYBI A 0 0
-	FrameIndex CYBI B 0 1
-	FrameIndex CYBI C 0 2
-	FrameIndex CYBI D 0 3
-	FrameIndex CYBI E 0 4
-	FrameIndex CYBI F 0 5
-	FrameIndex CYBI G 0 6
-	FrameIndex CYBI H 0 7
-	FrameIndex CYBI I 0 8
-	FrameIndex CYBI J 0 9
-	FrameIndex CYBI K 0 10
-	FrameIndex CYBI L 0 11
-	FrameIndex CYBI M 0 12
-	FrameIndex CYBI N 0 13
-	FrameIndex CYBI O 0 14
-	FrameIndex CYBI P 0 15
-	FrameIndex CYBI Q 0 16
-	FrameIndex CYBI R 0 17
-	FrameIndex CYBI S 0 18
-	FrameIndex CYBI T 0 19
-	FrameIndex CYBI U 0 20
-	FrameIndex CYBI V 0 21
-	FrameIndex CYBI W 0 22
-	FrameIndex CYBI X 0 23
-	FrameIndex CYBI Y 0 24
-	FrameIndex CYBI Z 0 25
-
-	FrameIndex CYBA A 0 26
-	FrameIndex CYBA B 0 27
-	FrameIndex CYBA C 0 28
-	FrameIndex CYBA D 0 29
-	FrameIndex CYBA E 0 30
-	FrameIndex CYBA F 0 31
-	FrameIndex CYBA G 0 32
-	FrameIndex CYBA H 0 33
-	FrameIndex CYBA I 0 34
-	FrameIndex CYBA J 0 35
-
-	// Rise
-	FrameIndex CYBA K 0 36
-	FrameIndex CYBA L 0 37
-	FrameIndex CYBA M 0 38
-	FrameIndex CYBA N 0 39
-	FrameIndex CYBA O 0 40
-	FrameIndex CYBA P 0 41
-
-	// Idle
-	FrameIndex CYBA Q 0 42
-
-	// Walk
-	FrameIndex CYBA R 0 43
-	FrameIndex CYBA S 0 44
-	FrameIndex CYBA T 0 45
-	FrameIndex CYBA U 0 46
-	FrameIndex CYBA V 0 47
-	FrameIndex CYBA W 0 48
-	FrameIndex CYBA X 0 49
-	FrameIndex CYBA Y 0 50 //*step*
-	FrameIndex CYBA Z 0 51
-
-	FrameIndex CYBB A 0 52
-	FrameIndex CYBB B 0 53
-	FrameIndex CYBB C 0 54
-	FrameIndex CYBB D 0 55
-	FrameIndex CYBB E 0 56
-	FrameIndex CYBB F 0 57
-	FrameIndex CYBB G 0 58
-	FrameIndex CYBB H 0 59
-	FrameIndex CYBB I 0 60
-	FrameIndex CYBB J 0 61
-	FrameIndex CYBB K 0 62
-	FrameIndex CYBB L 0 63
-	FrameIndex CYBB M 0 64
-	FrameIndex CYBB N 0 65
-	FrameIndex CYBB O 0 66
-	FrameIndex CYBB P 0 67 //*step*
-	FrameIndex CYBB Q 0 68
-	FrameIndex CYBB R 0 69
-	FrameIndex CYBB S 0 70
-	FrameIndex CYBB T 0 71
-	FrameIndex CYBB U 0 72
-	FrameIndex CYBB V 0 73
-	FrameIndex CYBB W 0 74
-	FrameIndex CYBB X 0 75
-
-	// Run
-	FrameIndex CYBB Y 0 76
-	FrameIndex CYBB Z 0 77
-
-	FrameIndex CYBC A 0 78
-	FrameIndex CYBC B 0 79
-	FrameIndex CYBC C 0 80 //*step*
-	FrameIndex CYBC D 0 81
-	FrameIndex CYBC E 0 82
-	FrameIndex CYBC F 0 83
-	FrameIndex CYBC G 0 84
-	FrameIndex CYBC H 0 85
-	FrameIndex CYBC I 0 86
-	FrameIndex CYBC J 0 87 //*step*
-	FrameIndex CYBC K 0 88
-	FrameIndex CYBC L 0 89
-	FrameIndex CYBC M 0 90
-	FrameIndex CYBC N 0 91
-	FrameIndex CYBC O 0 92
-
-	// Melee
-	FrameIndex CYBC P 0 93
-	FrameIndex CYBC Q 0 94
-	FrameIndex CYBC R 0 95
-	FrameIndex CYBC S 0 96
-	FrameIndex CYBC T 0 97
-	FrameIndex CYBC U 0 98
-	FrameIndex CYBC V 0 99
-	FrameIndex CYBC W 0 100
-	FrameIndex CYBC X 0 101
-	FrameIndex CYBC Y 0 102
-	FrameIndex CYBC Z 0 103
-
-	FrameIndex CYBD A 0 104
-	FrameIndex CYBD B 0 105
-	FrameIndex CYBD C 0 106
-	FrameIndex CYBD D 0 107
-	FrameIndex CYBD E 0 108
-	FrameIndex CYBD F 0 109
-	FrameIndex CYBD G 0 110
-	FrameIndex CYBD H 0 111
-	FrameIndex CYBD I 0 112
-	FrameIndex CYBD J 0 113
-	FrameIndex CYBD K 0 114
-	FrameIndex CYBD L 0 115
-	FrameIndex CYBD M 0 116
-	FrameIndex CYBD N 0 117
-	FrameIndex CYBD O 0 118
-	FrameIndex CYBD P 0 119
-	FrameIndex CYBD Q 0 120
-	FrameIndex CYBD R 0 121
-	FrameIndex CYBD S 0 122
-	FrameIndex CYBD T 0 123
-	FrameIndex CYBD U 0 124
-	FrameIndex CYBD V 0 125
-	FrameIndex CYBD W 0 126
-	FrameIndex CYBD X 0 127
-	FrameIndex CYBD Y 0 128
-	FrameIndex CYBD Z 0 129
-
-	FrameIndex CYBE A 0 130
-	FrameIndex CYBE B 0 131
-	FrameIndex CYBE C 0 132
-	FrameIndex CYBE D 0 133
+	CORRECTPIXELSTRETCH
+	BaseFrame
 }
 
 Model Flumpty

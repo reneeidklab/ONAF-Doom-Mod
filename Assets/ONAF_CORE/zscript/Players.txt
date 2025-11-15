@@ -64,7 +64,7 @@ class ThePlayer : PlayerPawn
 	}
 	void FootStep()
 	{
-		If (CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
+		If (CheckFloorTexture("PUZZLE1") || CheckFloorTexture("PUZZLE2") || CheckFloorTexture("FTILES1") || CheckFloorTexture("CONC5") || CheckFloorTexture("CONC4") || CheckFloorTexture("CONC2"))
 		{
 			If (Player.ViewHeight < 46) { A_PlaySound("TileStep",0,0.5); }
 			Else { A_PlaySound("TileStep",0,1.0); }
